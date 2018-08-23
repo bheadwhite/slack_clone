@@ -2,11 +2,25 @@ import React, { Component } from "react";
 import "./CreateUser.css";
 
 class CreateUser extends Component {
-  state = {};
+  constructor() {
+    super();
+    this.state = {
+      firstName: "",
+      lastName: "",
+      phoneNumber: "",
+      email: "",
+      profileImg: ""
+    };
+  }
 
   // We need a function to an endpoint that
   // creates a user with the info from the
   // form. And if it works redirect to '/'
+
+  handleInputs(e) {
+    // uses the name of the input and the value. (borat voice) very nice!
+    this.setState({ [e.target.name]: [e.target.value] });
+  }
 
   render() {
     return (
