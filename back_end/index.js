@@ -15,6 +15,11 @@ module.exports = (
         resolvers
     })
 )
+massive(process.env.CONNECTION_STRING).then(db => {
+    app.set('db', db)
+  }).then(res => {
+    console.log('database is connected')
+  })
 
 const app = express()
 
