@@ -2,29 +2,23 @@ const express = require('express')
 const bodyParser = require('body-parser')
 require('dotenv').config()
 const cors = require('cors')
-const massive=require('massive')
+const massive = require('massive')
+
+const app = express()
 //graphQL Stuff
-const {graphqlExpress} = require('apollo-server-express')
-const {makeExecutableSchema} = require('graphql-tools')
+const { ApolloServer} = require('apollo-server')
 const typeDefs = require('./schema')
 const resolvers = require('./resolvers')
 
-module.exports = (
-    schema = makeExecutableSchema({
-        typeDefs,
-        resolvers
-    })
-)
-massive(process.env.CONNECTION_STRING).then(db => {
-    app.set('db', db)
-  }).then(res => {
-    console.log('database is connected')
-  })
+const server = new ApolloServer({ typeDefs, resolvers })
+server.listen().then(({url}) => {
+    console.log(`Apollo Server listening at ${url}`)
+})
+//to start servers use npm start
+//go to localhost:4000 after its spun up and you'll see the playground for graphQL.
 
-const app = express()
-
-app.use('/graphql', cors(), bodyParser.json(), graphqlExpress({ schema }))
-
+app.use('/graphql', cors(), bodyParser.json())
 
 const port = 3001
-app.listen(port, ()=> console.log(`server is running on ${port}`))
+app.listen(port, ()=> {console.log(`server is running on ${port}`)})
+
