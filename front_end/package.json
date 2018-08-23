@@ -17,5 +17,5 @@
     "eject": "react-scripts eject"
   },
   "main": "./../back_end/index.js",
-  "proxy": "http://localhost:3001"
+  "proxy": "http://localhost:3000"
 }
