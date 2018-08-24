@@ -17,6 +17,13 @@ server.listen().then(({url}) => {
 //to start servers use npm start
 //go to localhost:4000 after its spun up and you'll see the playground for graphQL.
 
+//DB connection:
+massive(process.env.CONNECTION_STRING).then(db => {
+    app.set('db', db)
+  }).then(res => {
+    console.log('database is connected')
+  })
+
 app.use('/graphql', cors(), bodyParser.json())
 
 const port = 3001
