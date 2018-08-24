@@ -6,7 +6,7 @@ const massive = require('massive')
 
 const app = express()
 //graphQL Stuff
-const { ApolloServer} = require('apollo-server')
+const { ApolloServer } = require('apollo-server')
 const typeDefs = require('./schema')
 const resolvers = require('./resolvers')
 
