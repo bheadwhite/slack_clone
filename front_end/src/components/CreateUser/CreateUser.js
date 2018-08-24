@@ -22,8 +22,8 @@ class CreateUser extends Component {
   // creates a user with the info from the
   // form. And if it works redirect to '/'
 
-  // createUser() {
-  //   //! Needs the endpoint
+  //! createUser() {
+  //!  Needs the endpoint
   //   axios.post(`http://localhost3001/endpointHere`, {body of request here}).then(() => {
   //     console.log("This function should redirect to the home page after a succesful creation of a user");
   //   });
