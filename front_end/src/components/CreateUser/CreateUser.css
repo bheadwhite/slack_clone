@@ -36,13 +36,18 @@
   text-align: center;
 }
 
+.create-user-wrapper input:focus {
+  border: 1.5px solid black;
+}
+
 .login-btn {
   background: #008952;
   border: none;
   width: 50%;
-  font-size: 1.3em;
+  font-size: 1.5em;
   border-radius: 5px;
   color: white;
+  padding: 5px;
 }
 
 .header {
@@ -51,8 +56,7 @@
 }
 
 img {
-  height: 40px;
-  width: 40px;
-  margin-top: 15px;
-  padding-right: 10px;
+  height: 60px;
+  width: 210px;
+  padding-bottom: 20px;
 }

@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import "./CreateUser.css";
 
+import axios from "axios";
+import { Redirect } from "react-router-dom";
+
 class CreateUser extends Component {
   constructor() {
     super();
@@ -11,15 +14,24 @@ class CreateUser extends Component {
       email: "",
       profileImg: ""
     };
+
+    this.handleInputs = this.handleInputs.bind(this);
   }
 
   // We need a function to an endpoint that
   // creates a user with the info from the
   // form. And if it works redirect to '/'
 
-  handleInputs(e) {
-    // uses the name of the input and the value. (borat voice) very nice!
-    this.setState({ [e.target.name]: [e.target.value] });
+  // createUser() {
+  //   //! Needs the endpoint
+  //   axios.post(`http://localhost3001/endpointHere`, {body of request here}).then(() => {
+  //     console.log("This function should redirect to the home page after a succesful creation of a user");
+  //   });
+  // }
+
+  handleInputs(event) {
+    // uses the name of the input and the value.   Very nice -Borat
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   render() {
@@ -27,16 +39,15 @@ class CreateUser extends Component {
       <div className="create-user-wrapper">
         <form>
           <div className="header">
-            <img src="https://assets.brandfolder.com/oox90q-9q2cew-bw1vdr/view@2x.png" />
-            <h3>Create Slack-Clone Account</h3>
+            <img src="https://assets.brandfolder.com/p34392sa/view.png" />
           </div>
 
-          <input type="text" name="first-name" placeholder="First Name" />
-          <input type="text" name="last-name" placeholder="Last Name" />
-          <input type="text" name="phone" placeholder="Phone Number" />
-          <input type="text" name="email" placeholder="Email" />
-          <input type="text" name="profile-pic" placeholder="Profile Image" />
-          <button className="login-btn">Continue</button>
+          <input type="text" name="first-name" placeholder="First Name" onChange={this.handleInputs} />
+          <input type="text" name="last-name" placeholder="Last Name" onChange={this.handleInputs} />
+          <input type="text" name="phone" placeholder="Phone Number" onChange={this.handleInputs} />
+          <input type="text" name="email" placeholder="Email" onChange={this.handleInputs} />
+          <input type="text" name="profileImg" placeholder="Profile Image" onChange={this.handleInputs} />
+          <button className="login-btn">Create Account</button>
         </form>
       </div>
     );

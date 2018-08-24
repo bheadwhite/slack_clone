@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Future Slack Clone</h1>
-        {/* {<CreateUser />} */}
+        <CreateUser />
       </div>
     );
   }
