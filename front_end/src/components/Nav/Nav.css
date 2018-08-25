@@ -1,0 +1,19 @@
+.nav {
+  position: absolute;
+  top: 0;
+  height: 30px; 
+  background: #ececec;
+  width: 100%;
+  padding: 10px 10px;
+  margin-left: 200px;
+}
+
+.nav-item {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.nav-item-channel {
+  margin-left: 20px; 
+  float: left;
+}
