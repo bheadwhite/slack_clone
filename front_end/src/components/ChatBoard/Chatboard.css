@@ -1,0 +1,15 @@
+.chatboard-container {
+  display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-around;
+	text-align: center;
+}
+
+.chatboard-module {
+  padding: 0px 25px 0px 25px;
+	justify-content: space-between;
+	align-content: center;
+}
+
