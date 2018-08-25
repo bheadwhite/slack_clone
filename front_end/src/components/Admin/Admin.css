@@ -1,0 +1,34 @@
+.admin-wrapper {
+  position: fixed;
+  border: 1px solid rgba(226, 219, 219, 0.8);
+  height: 600px;
+  width: 300px;
+  border-radius: 5px;
+  margin: 6% 0 0 1%;
+}
+
+.options-list {
+  list-style-type: none;
+  text-align: left;
+  width: 100%;
+}
+
+.options-list li {
+  padding: 10px;
+}
+
+.options-list li:hover {
+  background: #2d9ee0;
+  color: white;
+}
+
+.info-wrapper {
+  display: flex;
+  width: 100%;
+  height: 15%;
+}
+
+.info-wrapper img {
+  width: 80px;
+  height: 80px;
+}
