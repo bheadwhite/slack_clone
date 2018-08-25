@@ -1,0 +1,102 @@
+:root {
+  --gray-border: 1px solid rgba(226, 219, 219, 0.8);
+}
+
+button {
+  border-radius: 5px;
+}
+
+.status-box-wrapper {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: -150px 0 0 310px;
+  height: 300px;
+  width: 300px;
+  padding: 20px;
+  border: var(--gray-border);
+  border-radius: 5px;
+}
+
+.emoji-button {
+  font-size: 1.2em;
+  background-color: white;
+  border: var(--gray-border);
+  border: 1px solid gray;
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
+  padding: 2px 6px 2px 6px;
+}
+
+.emoji-button:hover {
+  background: #2d9ee0;
+  border-color: #2d9ee0;
+}
+
+.status-input {
+  font-size: 1.1em;
+  border: 1px solid gray;
+  padding: 4px;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.status-pick {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 100%;
+  margin-top: -20px;
+  border-bottom: var(--gray-border);
+}
+
+.handle-status-btns {
+  display: none;
+  flex-direction: row;
+  margin-top: 8px;
+  align-self: flex-end;
+}
+
+.cancel-btn {
+  background: white;
+  border: var(--gray-border);
+  color: black;
+  font-size: 1.2em;
+  margin: 0 5px 0 0;
+  padding: 5px;
+}
+
+.save-btn {
+  background: #008952;
+  color: white;
+  border: none;
+  font-size: 1.1em;
+  padding: 5px;
+}
+
+.cancel-status {
+  background: black;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  width: 20px;
+  height: 20px;
+}
+.close-icon {
+  align-self: flex-end;
+  margin: -29px 10px 0 0;
+  width: 25px;
+  height: 25px;
+  padding: 0;
+  display: none;
+}
+
+.close-icon:hover {
+  cursor: pointer;
+  text-shadow: 1px 1px black;
+}
+
+.show-btns {
+  display: flex;
+}
