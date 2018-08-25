@@ -9,6 +9,10 @@ class ChatBoard extends Component {
         <div className='chatboard-module'>
           <p>ChatBoard</p>
         </div>
+
+      <div className='message-box'>
+        <input className='message-input' placeholder='Message channel_name'/>
+      </div>
       </div>
     );
   }

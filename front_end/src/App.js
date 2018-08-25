@@ -12,7 +12,6 @@ class App extends Component {
     return (
       <div className="App">
         <Nav />
-        <h1>This is the Slack UI</h1>
         <ChatBoard />
         <Channels />
 
