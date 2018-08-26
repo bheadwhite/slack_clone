@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+import './components/ChatBoard/Chatboard.css'
 import routes from "./routes.js";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider, Query } from "react-apollo";
