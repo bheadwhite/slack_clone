@@ -1,0 +1,32 @@
+.chatboard-container {
+  display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-around;
+	text-align: center;
+	background: #ffffff;
+	margin-top: 50px;
+	margin-left: 200px;
+	height: 100vh;
+}
+
+.chatboard-module {
+  padding: 0px 25px 0px 25px;
+	justify-content: space-between;
+	align-content: center;
+}
+
+.message-box { 
+	width: 100%;
+	margin: 0px 20px 0px 20px;
+}
+
+.message-input {
+	padding: 15px 10px 15px 10px;
+	width: 1000px;
+	margin: 0px 40px 0px 40px;
+	border-radius: 8px;
+	border: solid 1px #bfbfbf;
+}
+
