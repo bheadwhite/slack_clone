@@ -27,8 +27,6 @@ class App extends Component {
       <div className="App">
         <h1>Future Slack Clone</h1>
         {routes}
-        <button onClick={() => this.showAdmin()}>Bfrest</button>
-        {this.state.showAdmin === true && <Admin />}
       </div>
     );
   }
