@@ -7,7 +7,7 @@ import { ApolloProvider, Query } from "react-apollo";
 import gql from "graphql-tag";
 
 // Context stuff
-import { UserProvider, UserContext } from "./Contexts/UserProvider";
+import UserProvider from "./Contexts/UserProvider";
 
 const client = new ApolloClient({
   uri: "http://localhost:4000/graphql"
@@ -53,6 +53,7 @@ class App extends Component {
   onUserSelected = ({ target }) => {
     this.setState(() => ({ selectedUser: target.value }));
   };
+
   render() {
     return (
       <UserProvider>

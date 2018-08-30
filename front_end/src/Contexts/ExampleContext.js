@@ -1,14 +1,15 @@
 import React, { Component } from "react";
+import Axios from "axios";
 
 //first we will make a new context
 const MyContext = React.createContext();
 
 //then create a provider component
-class MyProvider extends Component {
+class MessageProvider extends Component {
   // The provider is where you will keep your state
   // and methods that your component needs access to
   state = {
-    name: "brend",
+    message: [],
     age: 100,
     cool: true,
     growAyearOlder: () => this.setState({ age: this.state.age + 1 })
@@ -32,7 +33,14 @@ class MyProvider extends Component {
     );
   }
 }
-//////////////////////////
+
+//
+//
+//
+//
+//
+//
+//
 
 // Family component
 const Family = props => (
@@ -40,6 +48,14 @@ const Family = props => (
     <Person />
   </div>
 );
+
+//
+//
+//
+//
+//
+//
+//
 
 // Person component
 class Person extends Component {
@@ -50,17 +66,23 @@ class Person extends Component {
           // this is just a render function
           // React.Fragment renders a blank tag!
           // I used it instead of a div
-          <React.Fragment>
+          <div>
             <p>age {context.state.age}</p>
             <button onClick={context.state.growAyearOlder}>add a year</button>
-          </React.Fragment>
+          </div>
         )}
       </MyContext.Consumer>
     );
   }
 }
 
-//////////////////////////
+//
+//
+//
+//
+//
+//
+//
 
 // Main App component
 class App extends Component {

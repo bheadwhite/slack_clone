@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import "./Admin.css";
+import axios from "axios";
 
 import Status from "../Status/Status.js";
+import { UserContext } from "../../Contexts/UserProvider";
 
 class Admin extends Component {
   constructor() {
@@ -12,6 +14,7 @@ class Admin extends Component {
       lastName: "Freston",
       email: "freston75@gmail.com",
       profileImg: "http://res.cloudinary.com/bfrest/image/upload/v1519392910/mainPic.png",
+      stillImg: "",
       showStatus: false
     };
   }
@@ -26,20 +29,31 @@ class Admin extends Component {
     }
   }
 
+  getGiph() {
+    axios.get("https://api.giphy.com/v1/gifs/random?api_key=Phs9JGGrInAjzqRKLKDASZUR2ea9d0oq&tag=&rating=G").then(result => {
+      this.setState({ stillImg: result.data.data.images.original.url });
+    });
+  }
+
   render() {
     const { showStatus } = this.state;
     return (
       <div className="admin-wrapper">
+        <UserContext.Consumer>
+          {context => (
+            <div className="info-wrapper">
+              <img className="profile-pic" src={this.state.profileImg} />
+              <p className="name">
+                {context.state.firstName} {context.state.lastName}
+              </p>
+            </div>
+          )}
+        </UserContext.Consumer>
         {/* this is what will display the status menu if the set status button is clicked */}
         {showStatus === true && <Status />}
-        <div className="info-wrapper">
-          <img className="profile-pic" src="https://randomuser.me/api/portraits/men/9.jpg" />
-          <p className="name">
-            {this.state.firstName} {this.state.lastName}
-          </p>
-        </div>
 
         <section className="options-list">
+          <img className="profile-pic" src={this.state.stillImg} />
           <ul>
             <li className="status-update" onClick={() => this.showStatus()}>
               Set a status
