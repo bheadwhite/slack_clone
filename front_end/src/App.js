@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import "./App.css";
-import './components/ChatBoard/Chatboard.css'
+import "./components/ChatBoard/Chatboard.css";
 import routes from "./routes.js";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider, Query } from "react-apollo";
 import gql from "graphql-tag";
+
+// Context stuff
+import { UserProvider, UserContext } from "./Contexts/UserProvider";
 
 const client = new ApolloClient({
   uri: "http://localhost:4000/graphql"
@@ -52,14 +55,16 @@ class App extends Component {
   };
   render() {
     return (
-      <ApolloProvider client={client}>
-        <div className="App">
-          <h1>Future Slack Clone</h1>
-          {/* GRAPHQL - insert the query componet where you want the jsx rendered on your page */}
-          <Users onUserSelected={this.onUserSelected} />
-          {routes}
-        </div>
-      </ApolloProvider>
+      <UserProvider>
+        <ApolloProvider client={client}>
+          <div className="App">
+            <h1>Future Slack Clone</h1>
+            {/* GRAPHQL - insert the query componet where you want the jsx rendered on your page */}
+            <Users onUserSelected={this.onUserSelected} />
+            {routes}
+          </div>
+        </ApolloProvider>
+      </UserProvider>
     );
   }
 }
