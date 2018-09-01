@@ -1,43 +1,51 @@
-const {gql} = require('apollo-server')
-module.exports = (gql`
-    type Channels {
-        id: Int!
-        channel_name: String!
-        users: [users!]!
-        messages: [Messages!]!
-    }
-    
-    type Messages {
-        id: Int!
-        message: String!
-        user: users!
-        channel: Channels!
-    }
-    
-    type users {
-        id: Int!
-        first_name: String
-        last_name: String
-        phone_number: String
-        email: String
-        profile_img: String
-        role_id: Permissions
-    }
-    
-    type Permissions {
-        id: Int!
-        access_level: String!
-    }
-    
-    type Query {
-        getUser(id: Int!): users!
-        allUsers: [users!]!
-    }
-    
-    type Mutation {
-        createChannel(channel_name: String!): Boolean!
-        createUser(username: String!, email: String!, password: String!): users!
-        createMessage(message: String!): Boolean!
-    }
-    
-`);
+const {
+  GraphQLSchema,
+  GraphQLObjectType,
+  GraphQLInt,
+  GraphQLString,
+  GraphQLList
+} = require("graphql");
+
+let schema = (db) => {
+
+    //this is a defined parameter for the main schema template
+    let userType = new GraphQLObjectType({
+        // name gets defined in the explorer tool
+    name: "yo",
+    fields: () => ({
+      id: { type: GraphQLInt },
+      first_name: { type: GraphQLString },
+      last_name: { type: GraphQLString },
+      email: { type: GraphQLString },
+      phone_number: { type: GraphQLString },
+      profile_img: { type: GraphQLString }
+    })
+  });
+
+//this is the main template
+  let schema = new GraphQLSchema({
+    query: new GraphQLObjectType({
+        //this name is what is defined in the explorer tool
+      name: "usersone",
+      fields: () => ({
+          //this array(GraphQLList) can now be 'query'ed
+        users: {
+          type: new GraphQLList(userType),
+          //send in a promise from the db, this will be what is sent to the query
+          resolve: () => db.users.find()
+        }
+      })
+    })
+
+//     mutation: new GraphQLObjectType({
+//         name: "Mutation",
+//         fields: () => ({
+//             addUser: {
+
+//             }
+//         })
+//     })
+  });
+  return schema
+};
+module.exports = schema;
