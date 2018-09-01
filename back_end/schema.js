@@ -1,3 +1,5 @@
+
+
 const {
   GraphQLSchema,
   GraphQLObjectType,
@@ -7,11 +9,24 @@ const {
 } = require("graphql");
 
 let schema = (db) => {
+  let messageType = new GraphQLObjectType({
+    name: "message",
+    fields: () => ({
+      id: { type: GraphQLInt },
+      message: { type: GraphQLString },
+      message_date: { type: GraphQLString },
+      user: { 
+        type: userType,
+        resolve: (parentValue, args) => {
+          return axios.
+      } },
+    })
+  })
 
     //this is a defined parameter for the main schema template
     let userType = new GraphQLObjectType({
         // name gets defined in the explorer tool
-    name: "yo",
+    name: "user",
     fields: () => ({
       id: { type: GraphQLInt },
       first_name: { type: GraphQLString },
