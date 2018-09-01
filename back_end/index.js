@@ -3,12 +3,39 @@ const bodyParser = require("body-parser");
 require("dotenv").config();
 const cors = require("cors");
 const massive = require("massive");
-const GraphQLHTTP = require('express-graphql');
 const app = express();
 const schema = require("./schema");
 
-let db;
+app.use("/graphql", cors(), bodyParser.json())
 
+
+/*
+ 
+ ███████╗███╗   ██╗██████╗ ██████╗  ██████╗ ██╗███╗   ██╗████████╗███████╗
+ ██╔════╝████╗  ██║██╔══██╗██╔══██╗██╔═══██╗██║████╗  ██║╚══██╔══╝██╔════╝
+ █████╗  ██╔██╗ ██║██║  ██║██████╔╝██║   ██║██║██╔██╗ ██║   ██║   ███████╗
+ ██╔══╝  ██║╚██╗██║██║  ██║██╔═══╝ ██║   ██║██║██║╚██╗██║   ██║   ╚════██║
+ ███████╗██║ ╚████║██████╔╝██║     ╚██████╔╝██║██║ ╚████║   ██║   ███████║
+ ╚══════╝╚═╝  ╚═══╝╚═════╝ ╚═╝      ╚═════╝ ╚═╝╚═╝  ╚═══╝   ╚═╝   ╚══════╝
+                                                                          
+ 
+*/
+
+
+
+
+
+/*
+ 
+ ██████╗ ██████╗        ██╗       ███████╗███████╗██████╗ ██╗   ██╗███████╗██████╗ 
+ ██╔══██╗██╔══██╗       ██║       ██╔════╝██╔════╝██╔══██╗██║   ██║██╔════╝██╔══██╗
+ ██║  ██║██████╔╝    ████████╗    ███████╗█████╗  ██████╔╝██║   ██║█████╗  ██████╔╝
+ ██║  ██║██╔══██╗    ██╔═██╔═╝    ╚════██║██╔══╝  ██╔══██╗╚██╗ ██╔╝██╔══╝  ██╔══██╗
+ ██████╔╝██████╔╝    ██████║      ███████║███████╗██║  ██║ ╚████╔╝ ███████╗██║  ██║
+ ╚═════╝ ╚═════╝     ╚═════╝      ╚══════╝╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═╝
+                                                                                   
+ 
+*/
 massive({
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
@@ -18,15 +45,9 @@ massive({
   ssl: true,
   poolSize: 10
 }).then(resp => {
-
-  db = resp
-
-  app.use("/graphql", cors(), bodyParser.json(), GraphQLHTTP({
-    schema: schema(db),
-    graphiql: true
-  }));
+  app.set('db', resp)
 
   app.listen({ port: 4000 }, () => {
-    console.log(`server is ready at http://localhost:4000/graphql`);
+    console.log(`server is ready at http://localhost:4000`);
   });
 })
