@@ -1,4 +1,26 @@
-.chatboard-container {
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: #fff;
+  min-height: 100vh;
+}
+input {
+  width: 90%;
+  border: 1px solid;
+  height: 30px;
+  font-size: 15px;
+	outline: none;
+	padding: 5px 10px 5px 10px;
+	border-radius: 5px;
+}
+
+.ChatBoard-container {
+  background-color: #fff;
+  border-radius: 3px;
+  min-width: calc(100% - 50px);
+  height: 80vh;
+  display: -ms-flexbox;
   display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -7,33 +29,54 @@
 	text-align: center;
 	background: #ffffff;
 	margin-top: 50px;
-	border-left: 1px solid #bfbfbf;
-	margin-left: 200px;
-	height: 100vh;
+  margin-left: 15%;
+	height: 90vh;
 }
 
-.chatboard-module {
-  padding: 0px 25px 0px 25px;
-	justify-content: space-between;
-	align-content: center;
+.ChatBoard-message-parent-container {
+  padding: 5px;
+  padding-bottom: 10px;
+  height: calc(90% - 20px);
+  width: calc(100% - 10px);
+  border-radius: 3px;
 }
 
-.message-box { 
-	width: 100%;
-	margin: 0px 20px 0px 20px;
+.ChatBoard-message-child-container {
+  padding: 15px;
+  padding-bottom: 0px;
+  height: calc(99% - 2px);
+  width: calc(100% - 30px);
+  background-color: #fff;
+  border-radius: 3px;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
-.message-input {
-	padding: 15px 10px 15px 10px;
-	width: 75vw;
-	margin: 0px 40px 0px 40px;
-	border-radius: 8px;
-	border: solid 1px #bfbfbf;
-	
+.ChatBoard-message-container {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 9%;
+  margin-top: 5px;
+  width: 100%;
+  padding: 0px 200px 0px 0px;
 }
 
-.message-submit {
-	padding: 15px 10px 15px 10px;
-	border-radius: 8px;
-	border: solid 1px #bfbfbf;
+.form-message-container {
+  width: 100%;
+}
+
+.App-container {
+  height: 780px;
+  width: 100%;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 30px;
+  min-width: 1000px;
 }

@@ -1,42 +1,71 @@
 import React, { Component } from "react";
-import './Chatboard.css'
+import './Chatboard.css';
+import Message from './ChatMessage/Message'
+import Nav from '../Nav/Nav'
 
 class ChatBoard extends Component {
   constructor() {
-    super()
-
+    super();
     this.state = {
-      message: ''
-    }
+      messages: [],
+      text: ''
+    };
 
-    this.onMessageChange = this.onMessageChange.bind(this)
+    this.submitMessage = this.submitMessage.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
-  onMessageSubmit(event) {
-    console.log(this.state.message)
+
+  handleChange(event) {
+    this.setState({
+      text: event.target.value
+    })
   }
 
-  onMessageChange = (event) => {
-    console.log(event.target.value)
-    let newMessage = event.target.value
-    this.setState({ message: newMessage })
+  submitMessage(event) {
+    console.log(this.state.text)
   }
+
+
+  editMessage = (id, text) => {
+    // edit message functionality
+    console.log(id)
+  }
+
+  removeMessage = (id) => {
+    // remove message functionality
+    console.log(id)
+  }
+
 
   render() {
+
     return (
-      <div className='chatboard-container'>
-        <div className='chatboard-module'>
-          <p>ChatBoard</p>
-        </div>
-        <div className='message-box'>
-          <form onSubmit={this.onMessageSubmit}>
-            <input className='message-input' placeholder='Message channel_name' onChange={this.onMessageChange} />
-            <button className='message-submit'>Send Message</button>
-          </form>
+      <div>
+        <Nav />
+
+        <div className="ChatBoard-container">
+          <div className="ChatBoard-message-parent-container">
+            <div className="ChatBoard-message-child-container">
+              {
+                this.state.messages.map(message => (
+                  <Message id={message.id} key={message.id} text={message.text} time={message.time} edit={this.editMessage} remove={this.removeMessage} />
+                ))
+              }
+            </div>
+          </div>
+          <div className="ChatBoard-message-container">
+            <form className='form-message-container' onSubmit={this.submitMessage} >
+              <input placeholder="Message Channel"
+                onChange={this.handleChange}
+              // value={this.state.text}
+              />
+            </form>
+          </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default ChatBoard;
+export default ChatBoard
