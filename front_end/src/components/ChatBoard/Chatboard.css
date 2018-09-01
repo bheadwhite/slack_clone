@@ -1,16 +1,15 @@
-#ChatBoard__container {
+.ChatBoard-container {
   background-color: #fff;
   border-radius: 3px;
-  min-width: calc(100% - 10%);
+  min-width: calc(100% - 10px);
   height: 80vh;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-direction: column;
-      flex-direction: column;
+  flex-direction: column;
   padding: 20px;
 }
 
-#ChatWindow__messagesParentContainer {
+.ChatWindow-messagesParentContainer {
   padding: 5px;
   padding-bottom: 10px;
   height: calc(90% - 20px);
@@ -18,7 +17,7 @@
   border-radius: 3px;
 }
 
-#ChatWindow__messagesChildContainer {
+.ChatWindow-messagesChildContainer {
   padding: 15px;
   padding-bottom: 0px;
   height: calc(99% - 2px);
@@ -29,7 +28,7 @@
   overflow-y: auto;
 }
 
-#ChatWindow__newMessageContainer {
+.ChatWindow-newMessageContainer {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: center;
@@ -42,7 +41,7 @@
 }
 
 input {
-  width: 100%;
+  width: 90%;
   border: 1px solid;
   height: 30px;
   font-size: 15px;
@@ -61,7 +60,7 @@ body {
   min-height: 100vh;
 }
 
-#App__container {
+.App-container {
   height: 780px;
   width: 100%;
   display: -ms-flexbox;

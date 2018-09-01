@@ -32,17 +32,17 @@ class Message extends Component {
     const { editting } = this.state;
     console.log( id, text );
     return (
-      <div className="Message__container">
-        <span className="Message__time">{time}</span>
+      <div className="Message-container">
+        <span className="Message-time">{time}</span>
         {
           editting
           ?
-            <input className="Message__input" value={ this.state.text } onChange={ this.handleChange } onKeyPress={ this.edit } />
+            <input className="Message-input" value={ this.state.text } onChange={ this.handleChange } onKeyPress={ this.edit } />
           :
-            <span className="Message__text">{text}</span>
+            <span className="Message-text">{text}</span>
         }
-        <span className="Message__edit" onClick={ () => this.setState({ editting: !this.state.editting, text }) }> Edit </span>
-        <span className="Message__delete" onClick={ () => remove( id ) }> X </span>
+        <span className="Message-edit" onClick={ () => this.setState({ editting: !this.state.editting, text }) }> Edit </span>
+        <span className="Message-delete" onClick={ () => remove( id ) }> X </span>
       </div>
     )
   }

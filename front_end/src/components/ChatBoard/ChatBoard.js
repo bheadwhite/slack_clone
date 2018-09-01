@@ -10,53 +10,57 @@ class ChatBoard extends Component {
       text: ''
     };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.createMessage = this.createMessage.bind(this);
-    this.editMessage = this.editMessage.bind(this);
-    this.removeMessage = this.removeMessage.bind(this);
+    this.submitMessage = this.submitMessage.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
 
   handleChange(event) {
-    this.setState({ text: event.target.value });
+    this.setState({
+      text: event.target.value
+    })
   }
 
-  createMessage(event) {
-    console.log(event.target.value)
+  submitMessage(event) {
+    console.log(this.state.text)
   }
 
-editMessage = (id, text) => {
-  console.log('editMessage:', id, text);
-  this.setState({ messages: text });
-}
 
-removeMessage = (id) => {
-  // this.setState({ messages:  });
-}
+  editMessage = (id, text) => {
+    // edit message functionality
+    console.log(id)
+  }
 
-render() {
+  removeMessage = (id) => {
+    // remove message functionality
+    console.log(id)
+  }
 
-  return (
-    <div id="ChatBoard__container">
-      <div id="ChatWindow__messagesParentContainer">
-        <div id="ChatWindow__messagesChildContainer">
-          {
-            this.state.messages.map(message => (
-              <Message id={message.id} key={message.id} text={message.text} time={message.time} edit={this.editMessage} remove={this.removeMessage} />
-            ))
-          }
+
+  render() {
+
+    return (
+      <div className="ChatBoard-container">
+        <div className="ChatWindow-messagesParentContainer">
+          <div className="ChatWindow-messagesChildContainer">
+            {
+              this.state.messages.map(message => (
+                <Message id={message.id} key={message.id} text={message.text} time={message.time} edit={this.editMessage} remove={this.removeMessage} />
+              ))
+            }
+          </div>
+        </div>
+        <div>
+          <form onSubmit={this.submitMessage} id="ChatWindow-newMessageContainer">
+            <input placeholder="Message Channel"
+              onChange={this.handleChange}
+            // value={this.state.text}
+            />
+          </form>
         </div>
       </div>
-      <div id="ChatWindow__newMessageContainer">
-        <input placeholder="Message Channel"
-          onKeyPress={this.createMessage}
-          onChange={this.handleChange}
-          value={this.state.text}
-        />
-      </div>
-    </div>
-  )
-}
+    )
+  }
 }
 
 export default ChatBoard
