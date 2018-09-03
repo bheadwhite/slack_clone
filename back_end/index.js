@@ -5,7 +5,7 @@ const cors = require("cors");
 const massive = require("massive");
 const app = express();
 
-app.use("/graphql", cors(), bodyParser.json())
+app.use(cors(), bodyParser.json())
 
 
 /*
@@ -19,10 +19,6 @@ app.use("/graphql", cors(), bodyParser.json())
                                                                           
  
 */
-
-
-
-
 
 /*
  
