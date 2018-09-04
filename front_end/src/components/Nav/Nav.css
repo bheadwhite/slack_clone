@@ -1,17 +1,18 @@
 .nav {
   position: absolute;
   top: 0;
+  left: 0;
   height: 30px; 
   background: #fff;
   border-bottom: 1px solid #bfbfbf;
-  width: 100%;
+  width: 77%;
   padding: 10px 10px;
   margin-left: 15%;
 }
 
 .nav-item {
   display: inline-block;
-  margin-right: 20px;
+  /* margin-right: 20px; */
 }
 
 .nav-item-channel {

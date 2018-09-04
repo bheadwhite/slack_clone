@@ -16,9 +16,9 @@ input {
 }
 
 .ChatBoard-container {
-  background-color: #fff;
+  background: #ffffff;
   border-radius: 3px;
-  min-width: calc(100% - 50px);
+  width: calc(78% - 30px);
   height: 80vh;
   display: -ms-flexbox;
   display: flex;
@@ -26,18 +26,16 @@ input {
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: space-around;
-	text-align: center;
-	background: #ffffff;
-	margin-top: 50px;
-  margin-left: 15%;
-	height: 90vh;
+  margin-top: 50px;
+  margin-left: 200px;
+
 }
 
 .ChatBoard-message-parent-container {
   padding: 5px;
   padding-bottom: 10px;
   height: calc(90% - 20px);
-  width: calc(100% - 10px);
+  width: 100%;
   border-radius: 3px;
 }
 
@@ -66,7 +64,11 @@ input {
 }
 
 .form-message-container {
-  width: 100%;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 40px;
+  width: 1000px;
+  margin-left: 100px;
 }
 
 .App-container {
@@ -78,5 +80,4 @@ input {
   justify-content: center;
   box-sizing: border-box;
   padding: 30px;
-  min-width: 1000px;
 }

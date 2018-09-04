@@ -7,14 +7,16 @@ class ChatBoard extends Component {
   constructor() {
     super();
     this.state = {
-      messages: [],
-      text: ''
+      channel: 'super-team',
+      messages: ['yo dude what are you doing?', 'wazzzzzuppppppp'],
+      text: '',
+      first_name: 'Jon',
+      last_name: 'Miller'
     };
 
     this.submitMessage = this.submitMessage.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
-
 
   handleChange(event) {
     this.setState({
@@ -22,10 +24,13 @@ class ChatBoard extends Component {
     })
   }
 
-  submitMessage(event) {
-    console.log(this.state.text)
+  submitMessage = (event) => {
+    this.state.messages.push(this.state.text)
+    this.setState({
+      text: ''
+    })
+    console.log(this.state.messages)
   }
-
 
   editMessage = (id, text) => {
     // edit message functionality
@@ -37,8 +42,33 @@ class ChatBoard extends Component {
     console.log(id)
   }
 
+  channelDisplay = () => {
+    if (this.state.channel) {
+      return `Message ${this.state.channel}`
+    } else {
+      return 'Message Channel'
+    }
+  }
 
   render() {
+
+    const messageList = this.state.messages.map((message, i) => (
+      <div key={i} className='Message-container'>
+        <div>
+          <img id='profile-img' src='https://www.f6s.com/images/profile-placeholder-user.jpg' />
+        </div>
+        <div className='username'>
+          {this.state.first_name} {this.state.last_name}
+          <div className='Message-text'>
+            {message}
+          </div>
+        </div>
+
+
+        <span className="Message-edit"> ... </span>
+        <span className="Message-delete" onClick={() => this.removeMessage()}> X </span>
+      </div>
+    ))
 
     return (
       <div>
@@ -47,18 +77,14 @@ class ChatBoard extends Component {
         <div className="ChatBoard-container">
           <div className="ChatBoard-message-parent-container">
             <div className="ChatBoard-message-child-container">
-              {
-                this.state.messages.map(message => (
-                  <Message id={message.id} key={message.id} text={message.text} time={message.time} edit={this.editMessage} remove={this.removeMessage} />
-                ))
-              }
+              {messageList}
             </div>
           </div>
           <div className="ChatBoard-message-container">
             <form className='form-message-container' onSubmit={this.submitMessage} >
-              <input placeholder="Message Channel"
+              <input placeholder={this.channelDisplay()}
                 onChange={this.handleChange}
-              // value={this.state.text}
+                value={this.state.text}
               />
             </form>
           </div>
