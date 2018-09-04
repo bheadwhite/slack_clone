@@ -1,10 +1,15 @@
 import React, { Component } from "react";
 import routes from "./routes";
 import "./App.css";
+import UserProvider from "./Contexts/UserProvider.js";
 
 class App extends Component {
   render() {
-    return <div className="App">{routes}</div>;
+    return (
+      <UserProvider>
+        <div className="App">{routes}</div>
+      </UserProvider>
+    );
   }
 }
 
