@@ -4,8 +4,10 @@ class Channels extends Component {
   state = {};
   render() {
     return (
-      <div>
-        <p>Channels component</p>
+      <div className='channels-container'>
+        <div className='channels-module'>
+          <p>Channels component</p>
+        </div>
       </div>
     );
   }
