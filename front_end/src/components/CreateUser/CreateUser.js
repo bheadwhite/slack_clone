@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./CreateUser.css";
 
 import axios from "axios";
-import { Redirect } from "react-router-dom";
+//import { Redirect } from "react-router-dom";
 
 class CreateUser extends Component {
   constructor() {
@@ -40,7 +40,7 @@ class CreateUser extends Component {
       <div className="create-user-wrapper">
         <form>
           <div className="header">
-            <img src="https://assets.brandfolder.com/p34392sa/view.png" />
+            <img alt="slack logo" src="https://assets.brandfolder.com/p34392sa/view.png" />
           </div>
 
           <input type="text" name="first-name" placeholder="First Name" onChange={this.handleInputs} />

@@ -5,8 +5,7 @@ const cors = require("cors");
 const massive = require("massive");
 const app = express();
 
-app.use(cors(), bodyParser.json())
-
+app.use(cors(), bodyParser.json());
 
 /*
  
@@ -32,9 +31,9 @@ app.use(cors(), bodyParser.json())
  
 */
 massive(process.env.CONNECTIONSTRING).then(resp => {
-  app.set('db', resp)
+  app.set("db", resp);
 
   app.listen({ port: 4000 }, () => {
     console.log(`server is ready at http://localhost:4000`);
   });
-})
+});

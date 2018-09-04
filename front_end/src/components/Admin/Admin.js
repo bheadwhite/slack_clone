@@ -10,9 +10,9 @@ class Admin extends Component {
     super();
 
     this.state = {
-      firstName: "Brendon",
-      lastName: "Freston",
-      email: "freston75@gmail.com",
+      firstName: "bill",
+      lastName: "murray",
+      email: "murray@gmail.com",
       profileImg: "http://res.cloudinary.com/bfrest/image/upload/v1519392910/mainPic.png",
       stillImg: "",
       showStatus: false
@@ -42,7 +42,7 @@ class Admin extends Component {
         <UserContext.Consumer>
           {context => (
             <div className="info-wrapper">
-              <img className="profile-pic" src={this.state.profileImg} />
+              <img className="profile-pic" src={this.state.profileImg} alt="profile pic" />
               <p className="name">
                 {context.state.firstName} {context.state.lastName}
               </p>
@@ -53,7 +53,6 @@ class Admin extends Component {
         {showStatus === true && <Status />}
 
         <section className="options-list">
-          <img className="profile-pic" src={this.state.stillImg} />
           <ul>
             <li className="status-update" onClick={() => this.showStatus()}>
               Set a status
@@ -66,7 +65,7 @@ class Admin extends Component {
         </section>
 
         <div className="info-wrapper">
-          <img className="profile-pic" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRR_Kdu902VTuZhfZLUW5NkAW_wBZJlaLUb0v3p8_AHbFpF7PZk_A" />
+          <img className="profile-pic" alt="profile pic" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRR_Kdu902VTuZhfZLUW5NkAW_wBZJlaLUb0v3p8_AHbFpF7PZk_A" />
           <p className="name">DevMountian</p>
         </div>
         <section className="options-list">
@@ -84,7 +83,7 @@ class Admin extends Component {
         </section>
 
         <section className="open-slack">
-          <img className="profile-pic" src="https://assets.brandfolder.com/osogig-6gybeo-1fxfn9/view.png" />
+          <img className="profile-pic" alt="workspace pic" src="https://assets.brandfolder.com/osogig-6gybeo-1fxfn9/view.png" />
           <p>Open the Slack App</p>
         </section>
       </div>
