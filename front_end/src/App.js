@@ -1,20 +1,10 @@
 import React, { Component } from "react";
+import routes from "./routes";
 import "./App.css";
-import "./components/ChatBoard/Chatboard.css";
-import routes from "./routes.js";
-import axios from "axios";
-import UserProvider from "./Contexts/UserProvider";
 
 class App extends Component {
   render() {
-    return (
-      <UserProvider>
-        <div className="App">
-          <h1>Future Slack Clone</h1>
-          {routes}
-        </div>
-      </UserProvider>
-    );
+    return <div className="App">{routes}</div>;
   }
 }
 
