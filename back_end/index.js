@@ -3,14 +3,13 @@ const bodyParser = require("body-parser");
 require("dotenv").config();
 const cors = require("cors");
 const massive = require("massive");
-const GraphQLHTTP = require('express-graphql');
+const GraphQLHTTP = require("express-graphql");
 const app = express();
 const schema = require("./schema");
 
 let db;
 
 massive({
-  host: process.env.DB_HOST,
   port: process.env.DB_PORT,
   database: process.env.DB_NAME,
   user: process.env.DB_USER,
@@ -18,15 +17,18 @@ massive({
   ssl: true,
   poolSize: 10
 }).then(resp => {
-
-  db = resp
-
-  app.use("/graphql", cors(), bodyParser.json(), GraphQLHTTP({
-    schema: schema(db),
-    graphiql: true
-  }));
+  db = resp;
+  app.use(
+    "/graphql",
+    cors(),
+    bodyParser.json(),
+    GraphQLHTTP({
+      schema: schema(db),
+      graphiql: true
+    })
+  );
 
   app.listen({ port: 4000 }, () => {
     console.log(`server is ready at http://localhost:4000/graphql`);
   });
-})
+});

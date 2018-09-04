@@ -48,7 +48,7 @@ class Status extends Component {
             <button className="emoji-button">{`\u{1F603}`}</button>
             <input className="status-input" placeholder="What's your status?" onChange={e => this.handleStatusInput(e)} />
           </div>
-          <img className="close-icon" src="http://res.cloudinary.com/bfrest/image/upload/v1535219516/cancel.png" onClick={() => this.hideButtons()} />
+          <img className="close-icon" alt="profile" src="http://res.cloudinary.com/bfrest/image/upload/v1535219516/cancel.png" onClick={() => this.hideButtons()} />
 
           <section className="handle-status-btns">
             <button className="cancel-btn" onClick={() => this.hideButtons()}>
