@@ -1,31 +1,25 @@
 .Message-container {
   width: calc(100% - 20px);
-  height: 65px;
   padding: 0 10px;
   background: #fff;
   border-radius: 3px;
-  -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
-          box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
   display: -ms-flexbox;
   display: flex;
   -ms-flex-align: center;
       align-items: center;
-  margin-bottom: 10px;
   position: relative;
+  margin-bottom: 10px;
 }
 
-.Message-time {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 11px;
-  opacity: 0.5;
+.Message-container:hover {
+  background: rgb(249, 249, 249);
 }
 
 .Message-text {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
+  position: relative;
+  font-weight: normal;
+  font-size: 14px;
+  padding-top: 8px;
 }
 
 .Message-edit {
@@ -34,6 +28,10 @@
   right: 30px;
   font-size: 13px;
   cursor: pointer;
+}
+
+.Message-edit:hover {
+  content: 'Edit'
 }
 
 .Message-delete {
@@ -48,4 +46,20 @@
   position: absolute;
   bottom: 10px;
   width: calc(98% + 4px);
+}
+
+#profile-img {
+  max-width: 60px;
+  max-height: 60px;
+  margin-right: 20px;
+  border-radius: 5px;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-bottom: 0px;
+}
+
+.username {
+  font-weight: bold;
+  text-align: left;
+  font-size: 16px;
 }
