@@ -1,17 +1,22 @@
 import React, { Component } from "react";
 import './Chatboard.css';
-import Message from './ChatMessage/Message'
+import './ChatMessage/message.css';
 import Nav from '../Nav/Nav'
+
+import { MessageContext } from "../../Contexts/MessageProvider";
 
 class ChatBoard extends Component {
   constructor() {
     super();
     this.state = {
-      channel: 'super-team',
+      firstName: "Brendon",
+      lastName: "Freston",
+      email: "freston75@gmail.com",
+      profileImg: "http://res.cloudinary.com/bfrest/image/upload/v1519392910/mainPic.png",
+      stillImg: "",
+      showStatus: false,
       messages: ['yo dude what are you doing?', 'wazzzzzuppppppp'],
       text: '',
-      first_name: 'Jon',
-      last_name: 'Miller'
     };
 
     this.submitMessage = this.submitMessage.bind(this)
@@ -58,7 +63,7 @@ class ChatBoard extends Component {
           <img id='profile-img' src='https://www.f6s.com/images/profile-placeholder-user.jpg' />
         </div>
         <div className='username'>
-          {this.state.first_name} {this.state.last_name}
+          {this.state.firstName} {this.state.lastName}
           <div className='Message-text'>
             {message}
           </div>
@@ -77,7 +82,27 @@ class ChatBoard extends Component {
         <div className="ChatBoard-container">
           <div className="ChatBoard-message-parent-container">
             <div className="ChatBoard-message-child-container">
-              {messageList}
+              <MessageContext.Consumer>
+                {context => (
+                  context.state.messages.map((message, i) => (
+                    <div key={i} className='Message-container'>
+                      <div>
+                        <img id='profile-img' src={context.state.profileImg} />
+                      </div>
+                      <div className='username'>
+                        {context.state.firstName} {context.state.lastName}
+                        <div className='Message-text'>
+                          {message}
+                        </div>
+                      </div>
+
+
+                      <span className="Message-edit"> ... </span>
+                      <span className="Message-delete" onClick={() => this.removeMessage()}> X </span>
+                    </div>
+                  ))
+                )}
+              </MessageContext.Consumer>
             </div>
           </div>
           <div className="ChatBoard-message-container">
