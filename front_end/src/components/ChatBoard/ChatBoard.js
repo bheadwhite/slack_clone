@@ -3,6 +3,8 @@ import './Chatboard.css';
 import './ChatMessage/message.css';
 import Nav from '../Nav/Nav'
 
+import axios from 'axios'
+
 import { MessageContext } from "../../Contexts/MessageProvider";
 
 class ChatBoard extends Component {
@@ -10,7 +12,9 @@ class ChatBoard extends Component {
     super();
     this.state = {
       profile: {},
+      users: [],
       text: '',
+      channel: ['super-team']
     };
     this.logout = this.logout.bind(this)
     this.submitMessage = this.submitMessage.bind(this)
@@ -23,13 +27,21 @@ class ChatBoard extends Component {
     })
   }
 
-  submitMessage = (event) => {
-    this.state.messages.push(this.state.text)
-    this.setState({
-      text: ''
+  submitMessage = () => {
+    let message = this.state.text
+    let message_date = new Date()
+    let user_id = 2
+    let channel_id = null
+
+    axios.post(`/api/messages`, { message, message_date, user_id, channel_id }).then(res => {
+      this.setState({
+        text: ''
+      })
+
     })
-    console.log(this.state.messages)
   }
+
+
 
   editMessage = (id, text) => {
     // edit message functionality
@@ -80,7 +92,6 @@ class ChatBoard extends Component {
     //       </div>
     //     </div>
 
-
     //     <span className="Message-edit"> ... </span>
     //     <span className="Message-delete" onClick={() => this.removeMessage()}> X </span>
     //   </div>
@@ -99,10 +110,11 @@ class ChatBoard extends Component {
                   context.state.messages.map((message, i) => (
                     <div key={i} className='Message-container'>
                       <div>
-                        <img id='profile-img' src={context.state.profileImg} />
+                        <img id='profile-img' src={context.state.profileImg} alt='profile_image' />
                       </div>
                       <div className='username'>
                         {context.state.firstName} {context.state.lastName}
+                        <span className='date-time'>{context.state.datetime}</span>
                         <div className='Message-text'>
                           {message}
                         </div>
