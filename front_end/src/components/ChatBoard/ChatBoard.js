@@ -9,13 +9,6 @@ class ChatBoard extends Component {
   constructor() {
     super();
     this.state = {
-      firstName: "Brendon",
-      lastName: "Freston",
-      email: "freston75@gmail.com",
-      profileImg: "http://res.cloudinary.com/bfrest/image/upload/v1519392910/mainPic.png",
-      stillImg: "",
-      showStatus: false,
-      messages: ['yo dude what are you doing?', 'wazzzzzuppppppp'],
       text: '',
     };
 
@@ -57,23 +50,23 @@ class ChatBoard extends Component {
 
   render() {
 
-    const messageList = this.state.messages.map((message, i) => (
-      <div key={i} className='Message-container'>
-        <div>
-          <img id='profile-img' src='https://www.f6s.com/images/profile-placeholder-user.jpg' />
-        </div>
-        <div className='username'>
-          {this.state.firstName} {this.state.lastName}
-          <div className='Message-text'>
-            {message}
-          </div>
-        </div>
+    // const messageList = this.state.messages.map((message, i) => (
+    //   <div key={i} className='Message-container'>
+    //     <div>
+    //       <img id='profile-img' src='https://www.f6s.com/images/profile-placeholder-user.jpg' />
+    //     </div>
+    //     <div className='username'>
+    //       {this.state.firstName} {this.state.lastName}
+    //       <div className='Message-text'>
+    //         {message}
+    //       </div>
+    //     </div>
 
 
-        <span className="Message-edit"> ... </span>
-        <span className="Message-delete" onClick={() => this.removeMessage()}> X </span>
-      </div>
-    ))
+    //     <span className="Message-edit"> ... </span>
+    //     <span className="Message-delete" onClick={() => this.removeMessage()}> X </span>
+    //   </div>
+    // ))
 
     return (
       <div>

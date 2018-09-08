@@ -7,7 +7,7 @@ class Nav extends Component {
     return (
       <div className='nav'>
         <span className='nav-item-channel'>Channel Name</span>
-        <span className='nav-item'>Logout</span> 
+        <button onClick={()=> console.log('hit logout')}>Logout</button>
       </div>
     );
   }
