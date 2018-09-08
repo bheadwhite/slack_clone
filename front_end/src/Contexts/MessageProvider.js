@@ -5,39 +5,45 @@ export const MessageContext = React.createContext();
 
 class MessageProvider extends Component {
   state = {
+    // users: [{
     firstName: [],
     lastName: [],
     email: [],
     profileImg: [],
     stillImg: [],
     showStatus: "",
+    // }],
     messages: [],
+    datetime: []
   };
 
   componentDidMount = () => {
     axios.get('/api/messages').then(res => {
       const userMessages = res.data
-
-      this.setState({
-        firstName: [userMessages.first_name],
-        lastName: [userMessages.last_name],
-        email: [userMessages.email],
-        profileImg: [userMessages.profile_img],
-        stillImg: [],
-        showStatus: "",
-        messages: [userMessages.message],
+      userMessages.map((data, i) => {
+        this.setState({
+          firstName: data.first_name,
+          lastName: data.last_name,
+          email: data.email,
+          profileImg: data.profile_img,
+          stillImg: [],
+          showStatus: "",
+          messages: [data.message],
+          datetime: [data.message_date]
+        })
+        console.log(this.state)
       })
     })
   }
 
   render() {
     return (
-      <MessageContext.Provider value={{ state: this.state }}>
+      <MessageContext.Provider value={{ state: this.state }} >
         {
           /*this will allow the children of the component you wrap with UserContext*/
           this.props.children
         }
-      </MessageContext.Provider>
+      </MessageContext.Provider >
     );
   }
 }
