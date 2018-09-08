@@ -11,7 +11,9 @@ class ChatBoard extends Component {
   constructor() {
     super();
     this.state = {
+      users: [],
       text: '',
+      channel: ['super-team']
     };
 
     this.submitMessage = this.submitMessage.bind(this)
@@ -29,8 +31,12 @@ class ChatBoard extends Component {
     let message_date = new Date()
     let user_id = 2
     let channel_id = null
+
     axios.post(`/api/messages`, { message, message_date, user_id, channel_id }).then(res => {
-      console.log(res.data)
+      this.setState({
+        text: ''
+      })
+
     })
   }
 
@@ -90,6 +96,7 @@ class ChatBoard extends Component {
                       </div>
                       <div className='username'>
                         {context.state.firstName} {context.state.lastName}
+                        <span className='date-time'>{context.state.datetime}</span>
                         <div className='Message-text'>
                           {message}
                         </div>
