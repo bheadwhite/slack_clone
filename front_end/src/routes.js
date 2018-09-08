@@ -36,12 +36,14 @@ export const makeMainRoutes = () => {
     </Router>
   );
 };
+
 // export default (
+//   <Router history={history}>
 //   <div>
-//     <Route exact path="/" component={Login} />
-//     <Route exact path="/chatboard" component={ChatBoard} />
-//     <Route path="/create-account" component={CreateUser} />
-//     <Route path="/callback" component={Callback} />
-//     <Route path="/admin" component={Admin} />
+//     <Route exact path="/" render={props => <Login auth={auth} {...props} />} />
+//     <Route exact path="/chatboard" render={props => <ChatBoard auth={auth} {...props} />} />
+//     <Route exact path="/create-account" render={props => <CreateUser auth={auth} {...props} />} />
+//     <Route exact path="/admin" render={props => <Admin auth={auth} {...props} />} />
 //   </div>
+//   </Router>
 // )

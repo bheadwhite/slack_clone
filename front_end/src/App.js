@@ -1,16 +1,13 @@
 import React, { Component } from "react";
 import "./App.css";
-import UserProvider from "./Contexts/UserProvider.js";
-// import MessageProvider from "./Contexts/MessageProvider";
-// import ChatBoard from './components/ChatBoard/ChatBoard'
-import routes from './routes'
-
+// =========    styles  ===============// 
+import './styles/main.css'
 
 class App extends Component {
 
   render() {
     return (
-          <div className="App">   
+          <div className="App">
           </div>
     );
   }
