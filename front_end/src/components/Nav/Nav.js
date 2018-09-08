@@ -1,16 +1,22 @@
 import React, { Component } from "react";
 import './Nav.css'
 
-class Nav extends Component {
-  state = {};
-  render() {
-    return (
-      <div className='nav'>
+function Nav(props) {
+  const { given_name, picture } = props.profile
+  const styles = {
+    height: "20px",
+    width: "20px"
+  }
+  return (
+    <div className='nav'>
         <span className='nav-item-channel'>Channel Name</span>
-        <span className='nav-item'>Logout</span> 
+        <div>
+          
+          Hello, {given_name}!
+          </div>
+        <button onClick={()=> props.auth()}>Logout</button>
       </div>
     );
-  }
 }
 
 export default Nav;

@@ -11,13 +11,14 @@ class ChatBoard extends Component {
   constructor() {
     super();
     this.state = {
+      profile: {},
       users: [],
       text: "",
       channel: ["super-team"]
     };
-
-    this.submitMessage = this.submitMessage.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.logout = this.logout.bind(this)
+    this.submitMessage = this.submitMessage.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
   handleChange(event) {
@@ -55,9 +56,26 @@ class ChatBoard extends Component {
     } else {
       return "Message Channel";
     }
-  };
+  }
+  logout(){
+    this.props.auth.logout()
+  }
+  componentWillMount() {
+    this.setState({ profile: {} });
+    const { userProfile, getProfile } = this.props.auth;
+    if (!userProfile) {
+      getProfile((err, profile) => {
+        this.setState({ profile });
+      });
+    } else {
+      this.setState({ profile: userProfile });
+    }
+  }
 
   render() {
+    console.log(this.state.profile)
+    const { isAuthenticated } = this.props
+
     // const messageList = this.state.messages.map((message, i) => (
     //   <div key={i} className='Message-container'>
     //     <div>
@@ -76,8 +94,9 @@ class ChatBoard extends Component {
     // ))
 
     return (
+
       <div>
-        <Nav />
+        <Nav auth={this.logout} profile={this.state.profile} />
 
         <div className="ChatBoard-container">
           <div className="ChatBoard-message-parent-container">

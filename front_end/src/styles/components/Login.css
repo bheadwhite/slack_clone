@@ -1,0 +1,24 @@
+#root {
+  height: 100%; }
+
+.mainLogin {
+  display: flex;
+  flex-direction: column;
+  background: pink;
+  min-height: 100vh; }
+  .mainLogin .imageBanner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto; }
+    .mainLogin .imageBanner .banner {
+      color: white; }
+      .mainLogin .imageBanner .banner span {
+        font-size: 1.2em; }
+      .mainLogin .imageBanner .banner .imagePlaceholder img {
+        object-fit: contain;
+        padding: 0; }
+    .mainLogin .imageBanner button {
+      padding: 10px;
+      width: 100px;
+      margin: auto; }
