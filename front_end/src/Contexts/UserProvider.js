@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import axios from "axios";
+// import axios from "axios";
 //this will create a new context
 export const UserContext = React.createContext();
 

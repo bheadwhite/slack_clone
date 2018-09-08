@@ -3,19 +3,14 @@ import './Chatboard.css';
 import './ChatMessage/message.css';
 import Nav from '../Nav/Nav'
 
+import axios from 'axios'
+
 import { MessageContext } from "../../Contexts/MessageProvider";
 
 class ChatBoard extends Component {
   constructor() {
     super();
     this.state = {
-      firstName: "Brendon",
-      lastName: "Freston",
-      email: "freston75@gmail.com",
-      profileImg: "http://res.cloudinary.com/bfrest/image/upload/v1519392910/mainPic.png",
-      stillImg: "",
-      showStatus: false,
-      messages: ['yo dude what are you doing?', 'wazzzzzuppppppp'],
       text: '',
     };
 
@@ -29,13 +24,17 @@ class ChatBoard extends Component {
     })
   }
 
-  submitMessage = (event) => {
-    this.state.messages.push(this.state.text)
-    this.setState({
-      text: ''
+  submitMessage = () => {
+    let message = this.state.text
+    let message_date = new Date()
+    let user_id = 2
+    let channel_id = null
+    axios.post(`/api/messages`, { message, message_date, user_id, channel_id }).then(res => {
+      console.log(res.data)
     })
-    console.log(this.state.messages)
   }
+
+
 
   editMessage = (id, text) => {
     // edit message functionality
@@ -57,23 +56,23 @@ class ChatBoard extends Component {
 
   render() {
 
-    const messageList = this.state.messages.map((message, i) => (
-      <div key={i} className='Message-container'>
-        <div>
-          <img id='profile-img' src='https://www.f6s.com/images/profile-placeholder-user.jpg' />
-        </div>
-        <div className='username'>
-          {this.state.firstName} {this.state.lastName}
-          <div className='Message-text'>
-            {message}
-          </div>
-        </div>
+    // const messageList = this.state.messages.map((message, i) => (
+    //   <div key={i} className='Message-container'>
+    //     <div>
+    //       <img id='profile-img' src='https://www.f6s.com/images/profile-placeholder-user.jpg' />
+    //     </div>
+    //     <div className='username'>
+    //       {this.state.firstName} {this.state.lastName}
+    //       <div className='Message-text'>
+    //         {message}
+    //       </div>
+    //     </div>
 
 
-        <span className="Message-edit"> ... </span>
-        <span className="Message-delete" onClick={() => this.removeMessage()}> X </span>
-      </div>
-    ))
+    //     <span className="Message-edit"> ... </span>
+    //     <span className="Message-delete" onClick={() => this.removeMessage()}> X </span>
+    //   </div>
+    // ))
 
     return (
       <div>
@@ -87,7 +86,7 @@ class ChatBoard extends Component {
                   context.state.messages.map((message, i) => (
                     <div key={i} className='Message-container'>
                       <div>
-                        <img id='profile-img' src={context.state.profileImg} />
+                        <img id='profile-img' src={context.state.profileImg} alt='profile_image' />
                       </div>
                       <div className='username'>
                         {context.state.firstName} {context.state.lastName}
