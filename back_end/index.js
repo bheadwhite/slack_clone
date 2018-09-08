@@ -21,6 +21,7 @@ app.use(cors(), bodyParser.json());
 */
 
 app.get('/api/messages', controller.getMessages)
+app.post('/api/messages', controller.addMessage)
 
 /*
  
