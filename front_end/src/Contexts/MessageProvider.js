@@ -1,18 +1,34 @@
 import React, { Component } from "react";
+import axios from "axios";
 //this will create a new context
 export const MessageContext = React.createContext();
 
 class MessageProvider extends Component {
   state = {
-    firstName: "Brendon",
-    lastName: "Freston",
-    email: "freston75@gmail.com",
-    profileImg: "http://res.cloudinary.com/bfrest/image/upload/v1519392910/mainPic.png",
-    stillImg: "",
-    showStatus: false,
-    messages: ['yo dude what are you doing?', 'wazzzzzuppppppp'],
-    text: '',
+    firstName: [],
+    lastName: [],
+    email: [],
+    profileImg: [],
+    stillImg: [],
+    showStatus: "",
+    messages: [],
   };
+
+  componentDidMount = () => {
+    axios.get('/api/messages').then(res => {
+      const userMessages = res.data
+
+      this.setState({
+        firstName: [userMessages.first_name],
+        lastName: [userMessages.last_name],
+        email: [userMessages.email],
+        profileImg: [userMessages.profile_img],
+        stillImg: [],
+        showStatus: "",
+        messages: [userMessages.message],
+      })
+    })
+  }
 
   render() {
     return (
