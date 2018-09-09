@@ -9,7 +9,7 @@ function Nav(props) {
   }
   return (
     <div className='nav'>
-        <span className='nav-item-channel'>Channel Name</span>
+        <span className='nav-item-channel'>Channel Name &nbsp;</span>
         <div>
           
           Hello, {given_name}!

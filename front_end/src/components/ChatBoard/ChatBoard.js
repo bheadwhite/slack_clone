@@ -57,7 +57,7 @@ class ChatBoard extends Component {
       return "Message Channel";
     }
   }
-  logout(){
+  logout() {
     this.props.auth.logout()
   }
   componentWillMount() {
@@ -75,23 +75,6 @@ class ChatBoard extends Component {
   render() {
     console.log(this.state.profile)
     const { isAuthenticated } = this.props
-
-    // const messageList = this.state.messages.map((message, i) => (
-    //   <div key={i} className='Message-container'>
-    //     <div>
-    //       <img id='profile-img' src='https://www.f6s.com/images/profile-placeholder-user.jpg' />
-    //     </div>
-    //     <div className='username'>
-    //       {this.state.firstName} {this.state.lastName}
-    //       <div className='Message-text'>
-    //         {message}
-    //       </div>
-    //     </div>
-
-    //     <span className="Message-edit"> ... </span>
-    //     <span className="Message-delete" onClick={() => this.removeMessage()}> X </span>
-    //   </div>
-    // ))
 
     return (
 
@@ -123,6 +106,9 @@ class ChatBoard extends Component {
                   ))
                 }
               </MessageContext.Consumer>
+            </div>
+            <div style={{ float: "left", clear: "both" }}
+              ref={(el) => { this.messagesEnd = el; }}>
             </div>
           </div>
           <div className="ChatBoard-message-container">
