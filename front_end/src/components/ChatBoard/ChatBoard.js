@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Moment from 'react-moment';
+
 import "./Chatboard.css";
 import "./ChatMessage/message.css";
 import Nav from "../Nav/Nav";
@@ -30,7 +32,7 @@ class ChatBoard extends Component {
   submitMessage = () => {
     let message = this.state.text;
     let message_date = new Date();
-    let user_id = 2;
+    let user_id = 1;
     let channel_id = null;
 
     axios.post(`/api/messages`, { message, message_date, user_id, channel_id }).then(res => {
@@ -42,12 +44,12 @@ class ChatBoard extends Component {
 
   editMessage = (id, text) => {
     // edit message functionality
-    console.log(id);
+    console.log('editing messages');
   };
 
   removeMessage = id => {
     // remove message functionality
-    console.log(id);
+    console.log('deleting messages');
   };
 
   channelDisplay = () => {
@@ -93,12 +95,15 @@ class ChatBoard extends Component {
                         <img id="profile-img" src={message.profile_img} alt="profile_image" />
                       </div>
                       <div className="username">
-                        {message.firstName} {message.lastName}
-                        <span className="date-time">{message.datetime}</span>
+                        {message.first_name} {message.last_name}
+                        <span className="date-time">
+                          <Moment format="hh:mm a">
+                            {message.message_date}
+                          </Moment></span>
                         <div className="Message-text">{message.message}</div>
-                      </div>
+                      </div>  
 
-                      <span className="Message-edit"> ... </span>
+                      <span className="Message-edit" onClick={() => this.editMessage()}> ... </span>
                       <span className="Message-delete" onClick={() => this.removeMessage()}>
                         X
                       </span>
@@ -107,9 +112,7 @@ class ChatBoard extends Component {
                 }
               </MessageContext.Consumer>
             </div>
-            <div style={{ float: "left", clear: "both" }}
-              ref={(el) => { this.messagesEnd = el; }}>
-            </div>
+
           </div>
           <div className="ChatBoard-message-container">
             <form className="form-message-container" onSubmit={this.submitMessage}>

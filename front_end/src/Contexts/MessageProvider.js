@@ -5,14 +5,12 @@ export const MessageContext = React.createContext();
 
 class MessageProvider extends Component {
   state = {
-    // users: [{
     firstName: [],
     lastName: [],
     email: [],
     profileImg: [],
     stillImg: [],
     showStatus: "",
-    // }],
     messages: [],
     datetime: []
   };
@@ -21,7 +19,9 @@ class MessageProvider extends Component {
     axios.get("/api/messages").then(res => {
       const userMessages = res.data;
       console.log(userMessages);
-      this.setState({ messages: [...res.data] });
+      this.setState({
+        messages: [...res.data]
+      });
     });
   };
 
