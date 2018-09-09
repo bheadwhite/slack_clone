@@ -2,23 +2,16 @@ import auth0 from 'auth0-js';
 import history from '../history';
 
 export default class Auth {
-
-    auth0 = new auth0.WebAuth({
-        domain: 'tallboydesigns.auth0.com',
-        clientID: 'EYnSpm2Y6iwSVAuHhPfGs1bm6wQe3hnS',
-        redirectUri: 'http://localhost:3000/callback',
-        responseType: 'token id_token',
-        scope: 'openid profile'
-    })
+  
+      auth0 = new auth0.WebAuth({
+          domain: process.env.REACT_APP_AUTH_DOMAIN,
+          clientID: process.env.REACT_APP_CLIENT_ID,
+          redirectUri: process.env.REACT_APP_CALLBACK,
+          responseType: 'token id_token',
+          scope: 'openid profile'
+      })
 
     userProfile;
-//   auth0 = new auth0.WebAuth({
-//     domain: process.env.AUTH_DOMAIN,
-//     clientID: process.env.CLIENT_ID,
-//     redirectUri: process.env.CALLBACK,
-//     responseType: 'token id_token',
-//     scope: 'openid'
-//   });
 
   constructor() {
     this.login = this.login.bind(this);

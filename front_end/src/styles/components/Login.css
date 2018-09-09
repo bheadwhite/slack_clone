@@ -4,7 +4,7 @@
 .mainLogin {
   display: flex;
   flex-direction: column;
-  background: pink;
+  background: blue;
   min-height: 100vh; }
   .mainLogin .imageBanner {
     display: flex;
