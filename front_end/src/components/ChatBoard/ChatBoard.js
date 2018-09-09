@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Moment from 'react-moment';
+
 import "./Chatboard.css";
 import "./ChatMessage/message.css";
 import Nav from "../Nav/Nav";
@@ -44,12 +46,12 @@ class ChatBoard extends Component {
 
   editMessage = (id, text) => {
     // edit message functionality
-    console.log(id);
+    console.log('editing messages');
   };
 
   removeMessage = id => {
     // remove message functionality
-    console.log(id);
+    console.log('deleting messages');
   };
   // ===============  channel functions  ============== //
   channelDisplay = () => {
@@ -64,6 +66,7 @@ class ChatBoard extends Component {
   logout() {
     this.props.auth.logout();
   }
+
   createUser(profile) {
     axios.post("/api/createUser", profile).then(res => {
       this.setState({
@@ -88,23 +91,6 @@ class ChatBoard extends Component {
     console.log(this.state.profile);
     const { isAuthenticated } = this.props;
 
-    // const messageList = this.state.messages.map((message, i) => (
-    //   <div key={i} className='Message-container'>
-    //     <div>
-    //       <img id='profile-img' src='https://www.f6s.com/images/profile-placeholder-user.jpg' />
-    //     </div>
-    //     <div className='username'>
-    //       {this.state.firstName} {this.state.lastName}
-    //       <div className='Message-text'>
-    //         {message}
-    //       </div>
-    //     </div>
-
-    //     <span className="Message-edit"> ... </span>
-    //     <span className="Message-delete" onClick={() => this.removeMessage()}> X </span>
-    //   </div>
-    // ))
-
     return (
       <div>
         <Nav auth={this.logout} profile={this.state.profile} />
@@ -125,16 +111,15 @@ class ChatBoard extends Component {
                         />
                       </div>
                       <div className="username">
-                        {message.firstName} {message.lastName}
-                        <span className="date-time">{message.datetime}</span>
+                        {message.first_name} {message.last_name}
+                        <span className="date-time">
+                          <Moment format="hh:mm a">
+                            {message.message_date}
+                          </Moment></span>
                         <div className="Message-text">{message.message}</div>
-                      </div>
-
-                      <span className="Message-edit"> ... </span>
-                      <span
-                        className="Message-delete"
-                        onClick={() => this.removeMessage()}
-                      >
+                      </div>  
+                      <span className="Message-edit" onClick={() => this.editMessage()}> ... </span>
+                      <span className="Message-delete" onClick={() => this.removeMessage()}>
                         X
                       </span>
                     </div>
@@ -142,6 +127,7 @@ class ChatBoard extends Component {
                 }
               </MessageContext.Consumer>
             </div>
+
           </div>
           <div className="ChatBoard-message-container">
             <form
