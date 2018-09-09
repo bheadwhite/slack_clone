@@ -16,11 +16,11 @@ class ChatBoard extends Component {
       text: "",
       channel: ["super-team"]
     };
-    this.logout = this.logout.bind(this)
-    this.submitMessage = this.submitMessage.bind(this)
-    this.handleChange = this.handleChange.bind(this)
+    this.logout = this.logout.bind(this);
+    this.submitMessage = this.submitMessage.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
-
+  // ===============  message functions  ============== //
   handleChange(event) {
     this.setState({
       text: event.target.value
@@ -30,14 +30,16 @@ class ChatBoard extends Component {
   submitMessage = () => {
     let message = this.state.text;
     let message_date = new Date();
-    let user_id = 2;
+    let user_id = this.state.profile.id;
     let channel_id = null;
 
-    axios.post(`/api/messages`, { message, message_date, user_id, channel_id }).then(res => {
-      this.setState({
-        text: ""
+    axios
+      .post(`/api/messages`, { message, message_date, user_id, channel_id })
+      .then(res => {
+        this.setState({
+          text: ""
+        });
       });
-    });
   };
 
   editMessage = (id, text) => {
@@ -49,32 +51,42 @@ class ChatBoard extends Component {
     // remove message functionality
     console.log(id);
   };
-
+  // ===============  channel functions  ============== //
   channelDisplay = () => {
     if (this.state.channel) {
       return `Message ${this.state.channel}`;
     } else {
       return "Message Channel";
     }
+  };
+
+  // ===============  user functions  ============== //
+  logout() {
+    this.props.auth.logout();
   }
-  logout(){
-    this.props.auth.logout()
+  createUser(profile) {
+    axios.post("/api/createUser", profile).then(res => {
+      this.setState({
+        profile: res.data[0]
+      });
+    });
   }
+  // ===============  lifecycle functions  ============== //
   componentWillMount() {
     this.setState({ profile: {} });
     const { userProfile, getProfile } = this.props.auth;
     if (!userProfile) {
       getProfile((err, profile) => {
-        this.setState({ profile });
+        this.createUser(profile);
       });
     } else {
-      this.setState({ profile: userProfile });
+      this.createUser(userProfile);
     }
   }
 
   render() {
-    console.log(this.state.profile)
-    const { isAuthenticated } = this.props
+    console.log(this.state.profile);
+    const { isAuthenticated } = this.props;
 
     // const messageList = this.state.messages.map((message, i) => (
     //   <div key={i} className='Message-container'>
@@ -94,7 +106,6 @@ class ChatBoard extends Component {
     // ))
 
     return (
-
       <div>
         <Nav auth={this.logout} profile={this.state.profile} />
 
@@ -107,7 +118,11 @@ class ChatBoard extends Component {
                     // in the map I just reference message.whatever instead of context.state.whatever
                     <div key={i} className="Message-container">
                       <div>
-                        <img id="profile-img" src={message.profile_img} alt="profile_image" />
+                        <img
+                          id="profile-img"
+                          src={message.profile_img}
+                          alt="profile_image"
+                        />
                       </div>
                       <div className="username">
                         {message.firstName} {message.lastName}
@@ -116,7 +131,10 @@ class ChatBoard extends Component {
                       </div>
 
                       <span className="Message-edit"> ... </span>
-                      <span className="Message-delete" onClick={() => this.removeMessage()}>
+                      <span
+                        className="Message-delete"
+                        onClick={() => this.removeMessage()}
+                      >
                         X
                       </span>
                     </div>
@@ -126,8 +144,15 @@ class ChatBoard extends Component {
             </div>
           </div>
           <div className="ChatBoard-message-container">
-            <form className="form-message-container" onSubmit={this.submitMessage}>
-              <input placeholder={this.channelDisplay()} onChange={this.handleChange} value={this.state.text} />
+            <form
+              className="form-message-container"
+              onSubmit={this.submitMessage}
+            >
+              <input
+                placeholder={this.channelDisplay()}
+                onChange={this.handleChange}
+                value={this.state.text}
+              />
             </form>
           </div>
         </div>

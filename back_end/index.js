@@ -4,13 +4,14 @@ require("dotenv").config();
 const cors = require("cors");
 const massive = require("massive");
 const app = express();
-const controller = require('./Controllers/messageController.js')
+const messageController = require("./Controllers/messageController.js");
+const userController = require("./Controllers/userController");
 
 app.use(cors(), bodyParser.json());
 
-
-app.get('/api/messages', controller.getMessages)
-app.post('/api/messages', controller.addMessage)
+app.get("/api/messages", messageController.getMessages);
+app.post("/api/messages", messageController.addMessage);
+app.post("/api/createUser", userController.createUser);
 
 massive(process.env.CONNECTIONSTRING).then(resp => {
   app.set("db", resp);
