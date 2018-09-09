@@ -10,6 +10,7 @@ app.use(cors(), bodyParser.json());
 
 
 app.get('/api/messages', controller.getMessages)
+app.post('/api/messages', controller.addMessage)
 
 massive(process.env.CONNECTIONSTRING).then(resp => {
   app.set("db", resp);

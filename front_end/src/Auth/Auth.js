@@ -16,6 +16,8 @@ export default class Auth {
   constructor() {
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
+    this.getProfile = this.getProfile.bind(this)
+    this.getAccessToken = this.getAccessToken.bind(this)
     this.handleAuthentication = this.handleAuthentication.bind(this);
     this.isAuthenticated = this.isAuthenticated.bind(this);
   }
@@ -47,13 +49,32 @@ export default class Auth {
     history.replace('/chatboard');
   }
 
+  getAccessToken() {
+    const accessToken = localStorage.getItem('access_token');
+    if (!accessToken) {
+      throw new Error('No access token found');
+    }
+    return accessToken;
+  }
+
+  getProfile(cb) {
+    let accessToken = this.getAccessToken();
+    this.auth0.client.userInfo(accessToken, (err, profile) => {
+      if (profile) {
+        this.userProfile = profile;
+      }
+      cb(err, profile);
+    });
+  }
+
   logout() {
     // Clear access token and ID token from local storage
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
+    this.userProfile = null
     // navigate to the home route
-    history.replace('/chatboard');
+    history.replace('/');
   }
 
   isAuthenticated() {

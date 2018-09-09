@@ -5,30 +5,41 @@ export const MessageContext = React.createContext();
 
 class MessageProvider extends Component {
   state = {
-    firstName: "",
-    lastName: "",
-    email: "@gmail.com",
-    profileImg: "",
-    stillImg: "",
+    // users: [{
+    firstName: [],
+    lastName: [],
+    email: [],
+    profileImg: [],
+    stillImg: [],
     showStatus: "",
+    // }],
     messages: [],
-    text: "",
+    datetime: []
   };
 
-  componentDidMount() {
-    axios.get('/api/messages').then(res => {
-      this.setState({
-        firstName: res.data[1].first_name,
-        lastName: res.data[1].last_name,
-        email: res.data[1].email,
-        profileImg: res.data[1].profile_img,
-        stillImg: "",
-        showStatus: false,
-        messages: [res.data[1].message],
-        text: '',
-      })
-    })
-  }
+  componentDidMount = () => {
+    axios.get("/api/messages").then(res => {
+      const userMessages = res.data;
+      console.log(userMessages);
+
+      this.setState({ messages: [...res.data] });
+
+      // Below is what you were doing before
+      // userMessages.map((data, i) => {
+      //   this.setState({
+      //     firstName: data.first_name,
+      //     lastName: data.last_name,
+      //     email: data.email,
+      //     profileImg: data.profile_img,
+      //     stillImg: [],
+      //     showStatus: "",
+      //     messages: [data.message],
+      //     datetime: [data.message_date]
+      //   })
+      //   console.log(this.state)
+      // })
+    });
+  };
 
   render() {
     return (
