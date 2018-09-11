@@ -4,7 +4,7 @@ import Moment from "react-moment";
 import "./Chatboard.css";
 import "./ChatMessage/message.css";
 import Nav from "../Nav/Nav";
-
+import Channels from './../Channels/Channels'
 import axios from "axios";
 
 import { MessageContext } from "../../Contexts/MessageProvider";
@@ -89,11 +89,12 @@ class ChatBoard extends Component {
     console.log(this.state.profile);
 
     return (
-      <div>
-        <Nav auth={this.logout} profile={this.state.profile} />
+      <div className='mainChat'>
 
+        <Channels />
         <div className="ChatBoard-container">
           <div className="ChatBoard-message-parent-container">
+        <Nav auth={this.logout} profile={this.state.profile} />
             <div className="ChatBoard-message-child-container">
               <MessageContext.Consumer>
                 {context =>

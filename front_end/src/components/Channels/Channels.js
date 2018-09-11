@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import './Channels.css'
 class Channels extends Component {
   state = {};
   render() {
