@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Moment from 'react-moment';
+import Moment from "react-moment";
 
 import "./Chatboard.css";
 import "./ChatMessage/message.css";
@@ -35,23 +35,21 @@ class ChatBoard extends Component {
     let user_id = this.state.profile.id;
     let channel_id = null;
 
-    axios
-      .post(`/api/messages`, { message, message_date, user_id, channel_id })
-      .then(res => {
-        this.setState({
-          text: ""
-        });
+    axios.post(`/api/messages`, { message, message_date, user_id, channel_id }).then(res => {
+      this.setState({
+        text: ""
       });
+    });
   };
 
   editMessage = (id, text) => {
     // edit message functionality
-    console.log('editing messages');
+    console.log("editing messages");
   };
 
   removeMessage = id => {
     // remove message functionality
-    console.log('deleting messages');
+    console.log("deleting messages");
   };
   // ===============  channel functions  ============== //
   channelDisplay = () => {
@@ -103,21 +101,19 @@ class ChatBoard extends Component {
                     // in the map I just reference message.whatever instead of context.state.whatever
                     <div key={i} className="Message-container">
                       <div>
-                        <img
-                          id="profile-img"
-                          src={message.profile_img}
-                          alt="profile_image"
-                        />
+                        <img id="profile-img" src={message.profile_img} alt="profile_image" />
                       </div>
                       <div className="username">
                         {message.first_name} {message.last_name}
                         <span className="date-time">
-                          <Moment format="hh:mm a">
-                            {message.message_date}
-                          </Moment></span>
+                          <Moment format="hh:mm a">{message.message_date}</Moment>
+                        </span>
                         <div className="Message-text">{message.message}</div>
-                      </div>  
-                      <span className="Message-edit" onClick={() => this.editMessage()}> ... </span>
+                      </div>
+                      <span className="Message-edit" onClick={() => this.editMessage()}>
+                        {" "}
+                        ...{" "}
+                      </span>
                       <span className="Message-delete" onClick={() => this.removeMessage()}>
                         X
                       </span>
@@ -126,18 +122,10 @@ class ChatBoard extends Component {
                 }
               </MessageContext.Consumer>
             </div>
-
           </div>
           <div className="ChatBoard-message-container">
-            <form
-              className="form-message-container"
-              onSubmit={this.submitMessage}
-            >
-              <input
-                placeholder={this.channelDisplay()}
-                onChange={this.handleChange}
-                value={this.state.text}
-              />
+            <form className="form-message-container" onSubmit={this.submitMessage}>
+              <input placeholder={this.channelDisplay()} onChange={this.handleChange} value={this.state.text} />
             </form>
           </div>
         </div>
