@@ -89,7 +89,6 @@ class ChatBoard extends Component {
 
   render() {
     console.log(this.state.profile);
-    const { isAuthenticated } = this.props;
 
     return (
       <div>
