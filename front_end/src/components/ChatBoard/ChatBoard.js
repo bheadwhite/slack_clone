@@ -9,6 +9,9 @@ import axios from "axios";
 
 import { MessageContext } from "../../Contexts/MessageProvider";
 
+import Admin from "../Admin/Admin.js";
+import { UserContext } from "../../Contexts/UserProvider";
+
 class ChatBoard extends Component {
   constructor() {
     super();
@@ -89,9 +92,20 @@ class ChatBoard extends Component {
     console.log(this.state.profile);
     const { isAuthenticated } = this.props;
 
+    const { first_name, last_name, profile_img } = this.state.profile;
     return (
       <div>
         <Nav auth={this.logout} profile={this.state.profile} />
+
+        <UserContext.Consumer>
+          {context => {
+            if (this.state.profile !== {}) {
+              context.state.firstName = first_name;
+              context.state.lastName = last_name;
+              context.state.profileImg = profile_img;
+            }
+          }}
+        </UserContext.Consumer>
 
         <div className="ChatBoard-container">
           <div className="ChatBoard-message-parent-container">
@@ -130,6 +144,8 @@ class ChatBoard extends Component {
             </form>
           </div>
         </div>
+        {/* //! THIS IS NOT SUPPOSED TO BE HERE ITS JUST FOR DEV PURPOSES */}
+        <Admin />
       </div>
     );
   }

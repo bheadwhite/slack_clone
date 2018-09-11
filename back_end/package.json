@@ -3,12 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "proxy": "http://localhost:4000",
+  "proxy": "localhost:3001",
   "scripts": {
     "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "proxy": "localhost:3001",
   "dependencies": {
     "axios": "^0.18.0",
     "babel-cli": "^6.26.0",

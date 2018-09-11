@@ -3,11 +3,12 @@
 }
 
 .admin-wrapper {
+  background: #f9f9f9;
   position: fixed;
   border: var(--gray-border);
   width: 300px;
   border-radius: 5px;
-  margin: -4% 0 0 1%;
+  margin: -43% 0 0 1%;
 }
 
 .options-list {

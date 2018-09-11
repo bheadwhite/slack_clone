@@ -10,11 +10,6 @@ class Admin extends Component {
     super();
 
     this.state = {
-      firstName: "bill",
-      lastName: "murray",
-      email: "murray@gmail.com",
-      profileImg: "http://res.cloudinary.com/bfrest/image/upload/v1519392910/mainPic.png",
-      stillImg: "",
       showStatus: false
     };
   }
@@ -42,7 +37,7 @@ class Admin extends Component {
         <UserContext.Consumer>
           {context => (
             <div className="info-wrapper">
-              <img className="profile-pic" src={this.state.profileImg} alt="profile pic" />
+              <img className="profile-pic" src={context.state.profileImg} alt="profile pic" />
               <p className="name">
                 {context.state.firstName} {context.state.lastName}
               </p>
