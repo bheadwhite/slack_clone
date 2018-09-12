@@ -142,8 +142,6 @@ class ChatBoard extends Component {
             </form>
           </div>
         </div>
-        {/* //! THIS IS NOT SUPPOSED TO BE HERE ITS JUST FOR DEV PURPOSES */}
-        <Admin />
       </div>
     );
   }
