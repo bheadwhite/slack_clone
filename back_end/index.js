@@ -30,7 +30,7 @@ massive(process.env.CONNECTIONSTRING).then(resp => {
 
 
 
-  app.listen({ port: 4000 }, () => {
+  server.listen({ port: 4000 }, () => {
     console.log(`server is ready at http://localhost:4000`);
   });
 });
