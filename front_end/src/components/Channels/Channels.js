@@ -7,10 +7,11 @@ import { UserContext } from "../../Contexts/UserProvider";
 import { Icon } from "semantic-ui-react";
 const styles = {
   search: {
-    color: "white",
+    color: "#c8cbce",
     position: "absolute",
-    top: "90px",
-    left: "27px"
+    top: "93px",
+    left: "27px",
+    zIndex: "1"
   }
 };
 
@@ -23,14 +24,20 @@ class Channels extends Component {
     return (
       <div className="channels-container">
         <div
-          className="adminPanel"
+          className="adminPanel cursor"
           onClick={() => this.setState({ adminShow: !adminShow })}
         >
-          <div className="center">
-            <h4>DevMountain</h4>
-            <UserContext.Consumer>
-              {context => context.state.firstName}
-            </UserContext.Consumer>
+          <div className="center cursor">
+            <h4 className="cursor">
+              DevMountain
+              <Icon name="dropdown" size="small" className="selectBack" />
+            </h4>
+            <Icon name="circle" size="small" color="green" />
+            <span className="selectBack">
+              <UserContext.Consumer>
+                {context => context.state.firstName}
+              </UserContext.Consumer>
+            </span>
           </div>
           <div className={adminShow ? "adminShow" : "adminHide"}>
             <Admin />
@@ -39,15 +46,32 @@ class Channels extends Component {
         <div className="channelsSection">
           <div>
             <Icon name="search" style={styles.search} />
-            <input type="text" placeholder="Jump to..." />
+            <input type="text" placeholder="Jump to..." className="scale cursor" />
           </div>
-          <div className="allUnreadsThreads"> all unreads all threads </div>
-          <div className="starred">starred list</div>
-          <div className="channels"> channels section </div>
-          <div className="directMessages"> direct Messages </div>
+          <div className="allUnreadsThreads">
+            <div className="seg cursor selectBack">
+              <div className="scale">
+                <Icon name="sidebar" />
+                All Unreads
+              </div>
+            </div>
+            <div className="seg cursor selectBack">
+              <div className="scale">
+                <Icon name="chat" flipped="horizontally" />
+                All Threads
+              </div>
+            </div>
+          </div>
+          <div className="starred">
+            <div className="scale">Starred</div>
+          </div>
+          <div className="channels">
+            <div className="scale cursor">Channels</div>
+          </div>
+          <div className="directMessages cursor">
+            <div className="scale">Direct Messages </div>
+          </div>
         </div>
-
-        <p>Channels component</p>
       </div>
     );
   }

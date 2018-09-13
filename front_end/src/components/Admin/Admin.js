@@ -42,7 +42,7 @@ class Admin extends Component {
         <UserContext.Consumer>
           {context => (
             <div className="info-wrapper">
-              <img className="profile-pic" src={this.state.profileImg} alt="profile pic" />
+              <img className="profile-pic" src={context.state.profileImg} alt="profile pic" />
               <p className="name">
                 {context.state.firstName} {context.state.lastName}
               </p>

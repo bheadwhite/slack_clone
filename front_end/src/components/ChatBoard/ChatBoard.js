@@ -7,7 +7,9 @@ import Channels from './../Channels/Channels'
 import axios from "axios";
 import { MessageContext } from "../../Contexts/MessageProvider";
 import openSocket from 'socket.io-client'
-const socket = openSocket('http://localhost:3000')
+import { UserContext } from './../../Contexts/UserProvider'
+
+const socket = openSocket('http://localhost:4000')
 
 
 class ChatBoard extends Component {
@@ -89,12 +91,20 @@ class ChatBoard extends Component {
   }
 
   render() {
-
-    console.log(this.state.profile);
-
+const { id, first_name, last_name, profile_img, email } = this.state.profile
     return (
       <div className='mainChat'>
-
+      <UserContext.Consumer>
+        {context => {
+          if(this.state.profile !== {}){
+            context.state.id = id
+            context.state.firstName = first_name
+            context.state.lastName = last_name
+            context.state.email = email
+            context.state.profileImg = profile_img
+          }
+        }}
+        </UserContext.Consumer>
         <Channels />
         <div className="ChatBoard-container">
           <div className="ChatBoard-message-parent-container">
