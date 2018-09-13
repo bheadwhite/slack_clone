@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import "./Nav.css";
 
 function Nav(props) {
-  const { first_name, profile_img } = props.profile;
+  const { firstName, profile_img } = props.profile;
   const styles = {
     height: "20px",
     width: "20px"
@@ -12,7 +12,7 @@ function Nav(props) {
         <span className='nav-item-channel'>Channel Name &nbsp;</span>
         <div>
           
-          Hello, {first_name}!
+          Hello, {firstName}!
           </div>
         <button onClick={()=> props.auth()}>Logout</button>
       </div>
