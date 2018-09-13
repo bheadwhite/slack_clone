@@ -10,7 +10,15 @@
     min-width:277px;
     .adminPanel {
         min-height: 74px;
-        background: pink;
+        background: $admin;
+        color: white;
+        h4 {
+            font-size: 21px;
+        }
+        .center {
+            margin: auto;
+            min-height: 74px;
+        }
         .adminShow {
             visibility: visible;
         }
@@ -21,5 +29,14 @@
     .channelsSection {
         max-height: 100vh;
         overflow-y: scroll;
+        div {
+            input {
+                background: $channelsSearch;
+                padding-left: 32px;
+                color: white;
+                border: none;
+                margin: 10px 0 10px 19px;
+            }
+        }
     }
 }

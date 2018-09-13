@@ -34,7 +34,13 @@
   min-width: 277px; }
   .channels-container .adminPanel {
     min-height: 74px;
-    background: pink; }
+    background: #2A3644;
+    color: white; }
+    .channels-container .adminPanel h4 {
+      font-size: 21px; }
+    .channels-container .adminPanel .center {
+      margin: auto;
+      min-height: 74px; }
     .channels-container .adminPanel .adminShow {
       visibility: visible; }
     .channels-container .adminPanel .adminHide {
@@ -42,3 +48,9 @@
   .channels-container .channelsSection {
     max-height: 100vh;
     overflow-y: scroll; }
+    .channels-container .channelsSection div input {
+      background: #0E1B29;
+      padding-left: 32px;
+      color: white;
+      border: none;
+      margin: 10px 0 10px 19px; }
