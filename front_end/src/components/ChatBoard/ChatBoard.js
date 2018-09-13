@@ -6,9 +6,9 @@ import Nav from "../Nav/Nav";
 import Channels from './../Channels/Channels'
 import axios from "axios";
 import { MessageContext } from "../../Contexts/MessageProvider";
-import openSocket from 'socket.io-client'
-const socket = openSocket('http://localhost:3000')
+import io from 'socket.io-client'
 
+const socket = io.connect('http://localhost:3000/');
 
 class ChatBoard extends Component {
   constructor() {
@@ -17,11 +17,23 @@ class ChatBoard extends Component {
       profile: {},
       users: [],
       text: "",
-      channel: ["super-team"]
+      channel: ["super-team"],
+      socket: null
     };
     this.logout = this.logout.bind(this);
     this.submitMessage = this.submitMessage.bind(this);
     this.handleChange = this.handleChange.bind(this);
+  }
+
+  startSocket = () => {
+    socket.on('news', function (data) {
+      console.log(data);
+      socket.emit('my other event', { my: 'data' });
+    });
+  }
+
+  componentDidMount = () => {
+    this.startSocket()
   }
 
   // ===============  message functions  ============== //
@@ -77,6 +89,7 @@ class ChatBoard extends Component {
   }
   // ===============  lifecycle functions  ============== //
   componentWillMount() {
+    this.initSocket()
     this.setState({ profile: {} });
     const { userProfile, getProfile } = this.props.auth;
     if (!userProfile) {
@@ -98,7 +111,7 @@ class ChatBoard extends Component {
         <Channels />
         <div className="ChatBoard-container">
           <div className="ChatBoard-message-parent-container">
-        <Nav auth={this.logout} profile={this.state.profile} />
+            <Nav auth={this.logout} profile={this.state.profile} />
             <div className="ChatBoard-message-child-container">
               <MessageContext.Consumer>
                 {context =>
@@ -129,7 +142,7 @@ class ChatBoard extends Component {
             </div>
           </div>
           <div className="ChatBoard-message-container">
-            <form className="form-message-container" onSubmit={this.send}>
+            <form className="form-message-container" onSubmit={this.submitMessage}>
               <input placeholder={this.channelDisplay()} onChange={this.handleChange} value={this.state.text} />
             </form>
           </div>

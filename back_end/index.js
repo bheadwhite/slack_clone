@@ -4,8 +4,10 @@ require('dotenv').config();
 const cors = require('cors');
 const massive = require('massive');
 const app = express();
-const server = require('http').Server(app)
-const io = require('socket.io')(server)
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
+var socketController = require('./Controllers/socketController')
+
 const messageController = require('./Controllers/messageController.js');
 const userController = require('./Controllers/userController');
 
@@ -20,12 +22,11 @@ massive(process.env.CONNECTIONSTRING).then(resp => {
 
 
   io.on('connection', function (socket) {
-    console.log('a user is connected')
-
-    socket.on('disconnect', function () {
-      console.log('user disconnected')
-    })
-  })
+    socket.emit('message', { hello: 'world' });
+    socket.on('my other event', function (data) {
+      console.log(data);
+    });
+  });
 
 
 
