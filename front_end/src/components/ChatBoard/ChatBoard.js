@@ -8,7 +8,7 @@ import axios from "axios";
 import { MessageContext } from "../../Contexts/MessageProvider";
 import io from 'socket.io-client'
 
-const socket = io.connect('http://localhost:3000/');
+const socket = io.connect('http://localhost:4000');
 
 class ChatBoard extends Component {
   constructor() {
@@ -89,7 +89,6 @@ class ChatBoard extends Component {
   }
   // ===============  lifecycle functions  ============== //
   componentWillMount() {
-    this.initSocket()
     this.setState({ profile: {} });
     const { userProfile, getProfile } = this.props.auth;
     if (!userProfile) {
