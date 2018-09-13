@@ -90,6 +90,7 @@ class ChatBoard extends Component {
     const { id, first_name, last_name, profile_img, email } = this.state.profile;
     return (
       <div className="mainChat">
+        <Channels />
         <UserContext.Consumer>
           {context => {
             if (this.state.profile !== {}) {
