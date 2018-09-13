@@ -6,10 +6,9 @@ import Nav from "../Nav/Nav";
 import Channels from "./../Channels/Channels";
 import axios from "axios";
 import { MessageContext } from "../../Contexts/MessageProvider";
-import openSocket from 'socket.io-client'
-const socket = openSocket('http://localhost:3000')
-
-
+import { UserContext } from "../../Contexts/UserProvider";
+// import openSocket from "socket.io-client";
+// const socket = openSocket("http://localhost:3000");
 class ChatBoard extends Component {
   constructor() {
     super();
@@ -89,13 +88,10 @@ class ChatBoard extends Component {
   }
 
   render() {
-<<<<<<< HEAD
     const { id, first_name, last_name, profile_img, email } = this.state.profile;
-=======
 
     console.log(this.state.profile);
 
->>>>>>> master
     return (
       <div className="mainChat">
         <Channels />

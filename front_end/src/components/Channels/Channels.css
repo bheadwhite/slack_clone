@@ -6,3 +6,11 @@
   background: darkgrey;
   min-width: 277px;
 }
+
+.adminPanel {
+  display: none;
+}
+
+.showAdminPanel {
+  display: flex;
+}

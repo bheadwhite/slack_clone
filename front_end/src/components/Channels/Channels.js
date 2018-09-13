@@ -4,10 +4,24 @@ import Admin from "./../Admin/Admin";
 
 import "./Channels.css";
 class Channels extends Component {
-  state = {};
+  state = { showAdmin: false };
+
+  toggleAdminPanel() {
+    const adminPanel = document.querySelector(".adminPanel");
+
+    if (adminPanel.classList.contains("showAdminPanel")) {
+      adminPanel.classList.remove("showAdminPanel");
+      this.setState({ showAdmin: false });
+    } else {
+      adminPanel.classList.add("showAdminPanel");
+      this.setState({ showAdmin: true });
+    }
+  }
+
   render() {
     return (
       <div className="channels-container">
+        <button onClick={() => this.toggleAdminPanel()}>Admin</button>
         <div className="adminPanel">
           <Admin />
         </div>
