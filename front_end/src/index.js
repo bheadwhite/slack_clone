@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom";
-import "./index.css";
+import './styles/main.css'
 // import { HashRouter } from "react-router-dom";
 import { makeMainRoutes } from './routes'
 
