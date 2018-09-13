@@ -89,17 +89,17 @@ class ChatBoard extends Component {
   }
 
   render() {
-    console.log(this.state.profile);
-
-    const { first_name, last_name, profile_img } = this.state.profile;
+    const { id, first_name, last_name, profile_img, email} = this.state.profile;
     return (
       <div className="mainChat">
         <UserContext.Consumer>
           {context => {
             if (this.state.profile !== {}) {
+              context.state.id = id
               context.state.firstName = first_name;
               context.state.lastName = last_name;
               context.state.profileImg = profile_img;
+              context.state.email = email;
             }
           }}
         </UserContext.Consumer>
