@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import Moment from "react-moment";
-
 import "./Chatboard.css";
 import "./ChatMessage/message.css";
 import Nav from "../Nav/Nav";
 import Channels from "./../Channels/Channels";
 import axios from "axios";
-
 import { MessageContext } from "../../Contexts/MessageProvider";
-import { UserContext } from "../../Contexts/UserProvider";
+import openSocket from 'socket.io-client'
+const socket = openSocket('http://localhost:3000')
+
 
 class ChatBoard extends Component {
   constructor() {
@@ -23,6 +23,7 @@ class ChatBoard extends Component {
     this.submitMessage = this.submitMessage.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
+
   // ===============  message functions  ============== //
   handleChange(event) {
     this.setState({
@@ -52,6 +53,7 @@ class ChatBoard extends Component {
     // remove message functionality
     console.log("deleting messages");
   };
+
   // ===============  channel functions  ============== //
   channelDisplay = () => {
     if (this.state.channel) {
@@ -87,7 +89,13 @@ class ChatBoard extends Component {
   }
 
   render() {
+<<<<<<< HEAD
     const { id, first_name, last_name, profile_img, email } = this.state.profile;
+=======
+
+    console.log(this.state.profile);
+
+>>>>>>> master
     return (
       <div className="mainChat">
         <Channels />
@@ -136,7 +144,7 @@ class ChatBoard extends Component {
             </div>
           </div>
           <div className="ChatBoard-message-container">
-            <form className="form-message-container" onSubmit={this.submitMessage}>
+            <form className="form-message-container" onSubmit={this.send}>
               <input placeholder={this.channelDisplay()} onChange={this.handleChange} value={this.state.text} />
             </form>
           </div>
