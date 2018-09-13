@@ -30,4 +30,9 @@
   margin: auto;
 }
 
+.channels-container .adminPanel {
+  min-height: 74px;
+  background: green;
+}
+
 /*# sourceMappingURL=main.css.map */
