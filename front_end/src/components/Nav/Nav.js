@@ -12,7 +12,6 @@ function Nav(props) {
         <span className='nav-item-channel'>Channel Name &nbsp;</span>
         <div>
           
-          {/* Hello, {first_name}! */}
           </div>
         <button onClick={()=> props.auth()}>Logout</button>
       </div>
