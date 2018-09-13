@@ -30,4 +30,33 @@
   margin: auto;
 }
 
+.mainChat {
+  display: flex;
+}
+
+.channels-container {
+  background: #313E4C;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-width: 277px;
+}
+.channels-container .adminPanel {
+  min-height: 74px;
+  background: pink;
+}
+.channels-container .adminPanel .adminShow {
+  visibility: visible;
+}
+.channels-container .adminPanel .adminHide {
+  visibility: hidden;
+}
+.channels-container .channelsSection {
+  max-height: 100vh;
+  overflow-y: scroll;
+}
+.channels-container .channelsSection div input {
+  background: #0E1B29;
+}
+
 /*# sourceMappingURL=main.css.map */

@@ -1,0 +1,42 @@
+@import './../variables/_variables';
+.mainChat {
+    display: flex;
+}
+.channels-container {
+    background: $channelsBack;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    min-width:277px;
+    .adminPanel {
+        min-height: 74px;
+        background: $admin;
+        color: white;
+        h4 {
+            font-size: 21px;
+        }
+        .center {
+            margin: auto;
+            min-height: 74px;
+        }
+        .adminShow {
+            visibility: visible;
+        }
+        .adminHide {
+            visibility: hidden;
+        }
+    }
+    .channelsSection {
+        max-height: 100vh;
+        overflow-y: scroll;
+        div {
+            input {
+                background: $channelsSearch;
+                padding-left: 32px;
+                color: white;
+                border: none;
+                margin: 10px 0 10px 19px;
+            }
+        }
+    }
+}
