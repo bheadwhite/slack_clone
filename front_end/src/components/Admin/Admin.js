@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./Admin.css";
 import axios from "axios";
 
 import Status from "../Status/Status.js";
