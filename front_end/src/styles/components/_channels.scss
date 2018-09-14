@@ -1,0 +1,71 @@
+@import './../variables/_variables';
+.mainChat {
+    display: flex;
+}
+.channels-container {
+    background: $admin;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    min-width:277px;
+    overflow-x: scroll;
+    .adminPanel {
+        min-height: 74px;
+        background: $admin;
+        color: #9ba0a5;
+        h4 {
+            font-size: 21px;
+            margin: 0;
+            color: white;
+        }
+        .center {
+            padding: 13px 0 15px 16px;
+            min-height: 74px;
+        }
+        .adminShow {
+            display: inherit;
+        }
+        .adminHide {
+            display: none;
+        }
+    }
+    .channelsSection {
+        line-height: 20px;
+        max-height: 100vh;
+        overflow-y: scroll;
+        overflow-x: hidden;            
+        color: #9ba0a5;
+        font-size: 19px;
+        padding-left: 11px;
+        div {
+            input {
+                background: $channelsSearch;
+                padding-left: 38px;
+                color: #9ba0a5;
+                border: none;
+                height: 40px;
+                width: 242px;
+                margin: 10px 0 10px 8px;
+            }
+        }
+        .allUnreadsThreads {
+            .seg {
+                padding : 6px 0;
+            }
+        }
+        .starred, .channels, .directMessages {
+            min-height: 200px;
+            margin-top: 20px;
+        }
+        .scale {
+            letter-spacing: 1.5px;
+        }
+        .cursor {
+            cursor: pointer;
+        }
+        .selectBack:hover {
+            // background:#818487;
+            color: white;
+        }
+    }
+}

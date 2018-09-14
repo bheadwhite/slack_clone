@@ -22,3 +22,56 @@
       padding: 10px;
       width: 100px;
       margin: auto; }
+
+.mainChat {
+  display: flex; }
+
+.channels-container {
+  background: #2A3644;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-width: 277px;
+  overflow-x: scroll; }
+  .channels-container .adminPanel {
+    min-height: 74px;
+    background: #2A3644;
+    color: #9ba0a5; }
+    .channels-container .adminPanel h4 {
+      font-size: 21px;
+      margin: 0;
+      color: white; }
+    .channels-container .adminPanel .center {
+      padding: 13px 0 15px 16px;
+      min-height: 74px; }
+    .channels-container .adminPanel .adminShow {
+      display: inherit; }
+    .channels-container .adminPanel .adminHide {
+      display: none; }
+  .channels-container .channelsSection {
+    line-height: 20px;
+    max-height: 100vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    color: #9ba0a5;
+    font-size: 19px;
+    padding-left: 11px; }
+    .channels-container .channelsSection div input {
+      background: #0E1B29;
+      padding-left: 38px;
+      color: #9ba0a5;
+      border: none;
+      height: 40px;
+      width: 242px;
+      margin: 10px 0 10px 8px; }
+    .channels-container .channelsSection .allUnreadsThreads .seg {
+      padding: 6px 0; }
+    .channels-container .channelsSection .starred, .channels-container .channelsSection .channels, .channels-container .channelsSection .directMessages {
+      min-height: 200px;
+      margin-top: 20px; }
+    .channels-container .channelsSection .scale {
+      letter-spacing: 1.5px; }
+    .channels-container .channelsSection .cursor {
+      cursor: pointer; }
+    .channels-container .channelsSection .selectBack:hover {
+      color: white; }
