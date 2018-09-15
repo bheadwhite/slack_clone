@@ -202,3 +202,156 @@
       text-shadow: 1px 1px black; }
   .status-box-wrapper .show-btns {
     display: flex; }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: #fff;
+  min-height: 100vh; }
+
+input {
+  width: 100%;
+  border: 1px solid;
+  height: 30px;
+  font-size: 15px;
+  outline: none;
+  padding: 5px 10px 5px 10px;
+  border-radius: 5px; }
+
+.date-time {
+  font-size: 12px;
+  color: lightgray;
+  font-weight: 400;
+  margin-left: 15px; }
+
+.ChatBoard-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  background: #ffffff;
+  border-radius: 3px;
+  width: calc(78% - 30px);
+  height: 80vh;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 20px; }
+
+.ChatBoard-message-parent-container {
+  padding: 5px;
+  padding-bottom: 10px;
+  height: calc(90% - 20px);
+  width: 100%;
+  border-radius: 3px; }
+
+.ChatBoard-message-child-container {
+  padding: 20px 15px 15px 15px;
+  padding-bottom: 0px;
+  height: calc(99% - -125px);
+  width: calc(100% - -4px);
+  background-color: #fff;
+  border-radius: 3px;
+  overflow-x: hidden;
+  overflow-y: auto; }
+
+.ChatBoard-message-container {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 9%;
+  margin-top: 5px;
+  width: 100%; }
+
+.form-message-container {
+  position: fixed;
+  bottom: 0;
+  width: 75%;
+  margin-bottom: 20px; }
+
+.App-container {
+  height: 780px;
+  width: 100%;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 30px; }
+
+.Message-container {
+  width: calc(100% - 20px);
+  background: #fff;
+  border-radius: 3px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  margin-bottom: 10px; }
+
+.Message-container:hover {
+  background: #f9f9f9; }
+
+.Message-text {
+  position: relative;
+  font-weight: normal;
+  font-size: 14px;
+  padding-top: 8px; }
+
+.Message-edit {
+  position: absolute;
+  top: 5px;
+  right: 30px;
+  font-size: 13px;
+  cursor: pointer; }
+
+.Message-edit:hover {
+  content: 'Edit'; }
+
+.Message-delete {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 13px;
+  cursor: pointer; }
+
+.Message-input {
+  position: absolute;
+  bottom: 10px;
+  width: calc(98% + 4px); }
+
+#profile-img {
+  max-width: 60px;
+  max-height: 60px;
+  margin-right: 20px;
+  border-radius: 5px;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-bottom: 0px; }
+
+.username {
+  font-weight: bold;
+  text-align: left;
+  font-size: 16px; }
+
+.nav {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 30px;
+  background: #fff;
+  border-bottom: 1px solid #bfbfbf;
+  width: 100%; }
+
+.nav-item {
+  display: inline-block;
+  /* margin-right: 20px; */ }
+
+.nav-item-channel {
+  margin-left: 20px;
+  float: left; }

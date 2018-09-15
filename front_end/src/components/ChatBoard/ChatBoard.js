@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import Moment from "react-moment";
-import "./Chatboard.css";
-import "./ChatMessage/message.css";
 import Nav from "../Nav/Nav";
 import Channels from "./../Channels/Channels";
 import axios from "axios";
@@ -85,15 +83,6 @@ class ChatBoard extends Component {
     socket.on("message", this.handleMessage);
   }
 
-  handleMessage(message) {
-    this.setState({
-      text: message
-    });
-  }
-
-  sendMessage = () => {
-    socket.emit("message", this.state.text);
-  };
 
   componentWillMount() {
     this.setState({ profile: {} });
