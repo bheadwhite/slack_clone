@@ -21,7 +21,7 @@ class MessageProvider extends Component {
     };
 
     socket.on('received message', (message) => {
-      axios.get("/api/messages").then(res => {
+      axios.get('/api/messages').then(res => {
         this.setState({
           messages: [message, ...res.data]
         });
