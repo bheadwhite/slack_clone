@@ -3,14 +3,13 @@ import Moment from "react-moment";
 import "./Chatboard.css";
 import "./ChatMessage/message.css";
 import Nav from "../Nav/Nav";
-import Channels from './../Channels/Channels'
+import Channels from "./../Channels/Channels";
 import axios from "axios";
 import { MessageContext } from "../../Contexts/MessageProvider";
-import openSocket from 'socket.io-client'
-import { UserContext } from './../../Contexts/UserProvider'
+import openSocket from "socket.io-client";
+import { UserContext } from "./../../Contexts/UserProvider";
 
-const socket = openSocket('http://localhost:4000')
-
+const socket = openSocket("http://localhost:4000");
 
 class ChatBoard extends Component {
   constructor() {
@@ -40,12 +39,12 @@ class ChatBoard extends Component {
     let channel_id = null;
 
     axios.post(`/api/messages`, { message, message_date, user_id, channel_id }).then(res => {
-      console.log('posted AF')
+      console.log("posted AF");
       // this.setState({
       //   text: ""
       // });
     });
-    this.sendMessage()
+    this.sendMessage();
   };
 
   editMessage = (id, text) => {
@@ -83,9 +82,22 @@ class ChatBoard extends Component {
   // ===============  lifecycle functions  ============== //
 
   componentDidMount() {
-    socket.on('message', this.handleMessage)
+    socket.on("message", this.handleMessage);
   }
 
+<<<<<<< HEAD
+  handleMessage(message) {
+    this.setState({
+      text: message
+    });
+  }
+
+  sendMessage = () => {
+    socket.emit("message", this.state.text);
+  };
+
+=======
+>>>>>>> master
   componentWillMount() {
     this.setState({ profile: {} });
     const { userProfile, getProfile } = this.props.auth;
@@ -109,21 +121,33 @@ class ChatBoard extends Component {
   }
 
   render() {
-    const { id, first_name, last_name, profile_img, email } = this.state.profile
+    const { id, first_name, last_name, profile_img, email } = this.state.profile;
     return (
-      <div className='mainChat'>
+      <div className="mainChat">
         <UserContext.Consumer>
           {context => {
             if (this.state.profile !== {}) {
-              context.state.id = id
-              context.state.firstName = first_name
-              context.state.lastName = last_name
-              context.state.email = email
-              context.state.profileImg = profile_img
+              context.state.id = id;
+              context.state.firstName = first_name;
+              context.state.lastName = last_name;
+              context.state.email = email;
+              context.state.profileImg = profile_img;
             }
           }}
         </UserContext.Consumer>
         <Channels />
+        <UserContext.Consumer>
+          {context => {
+            if (this.state.profile !== {}) {
+              context.state.id = id;
+              context.state.firstName = first_name;
+              context.state.lastName = last_name;
+              context.state.profileImg = profile_img;
+              context.state.email = email;
+            }
+          }}
+        </UserContext.Consumer>
+
         <div className="ChatBoard-container">
           <div className="ChatBoard-message-parent-container">
             <Nav auth={this.logout} profile={this.state.profile} />

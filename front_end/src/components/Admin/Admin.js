@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./Admin.css";
 import axios from "axios";
 
 import Status from "../Status/Status.js";
@@ -10,11 +9,6 @@ class Admin extends Component {
     super();
 
     this.state = {
-      firstName: "bill",
-      lastName: "murray",
-      email: "murray@gmail.com",
-      profileImg: "http://res.cloudinary.com/bfrest/image/upload/v1519392910/mainPic.png",
-      stillImg: "",
       showStatus: false
     };
   }
