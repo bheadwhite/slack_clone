@@ -39,10 +39,12 @@ class ChatBoard extends Component {
     let channel_id = null;
 
     axios.post(`/api/messages`, { message, message_date, user_id, channel_id }).then(res => {
-      this.setState({
-        text: ""
-      });
+      console.log("posted AF");
+      // this.setState({
+      //   text: ""
+      // });
     });
+    this.sendMessage();
   };
 
   editMessage = (id, text) => {
@@ -76,7 +78,23 @@ class ChatBoard extends Component {
       });
     });
   }
+
   // ===============  lifecycle functions  ============== //
+
+  componentDidMount() {
+    socket.on("message", this.handleMessage);
+  }
+
+  handleMessage(message) {
+    this.setState({
+      text: message
+    });
+  }
+
+  sendMessage = () => {
+    socket.emit("message", this.state.text);
+  };
+
   componentWillMount() {
     this.setState({ profile: {} });
     const { userProfile, getProfile } = this.props.auth;
@@ -150,7 +168,7 @@ class ChatBoard extends Component {
             </div>
           </div>
           <div className="ChatBoard-message-container">
-            <form className="form-message-container" onSubmit={this.send}>
+            <form className="form-message-container" onSubmit={this.submitMessage}>
               <input placeholder={this.channelDisplay()} onChange={this.handleChange} value={this.state.text} />
             </form>
           </div>

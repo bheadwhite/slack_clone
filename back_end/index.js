@@ -21,6 +21,20 @@ massive(process.env.CONNECTIONSTRING).then(resp => {
   io.on("connection", function(socket) {
     console.log("a user is connected");
 
+    socket.on("message", msg => {
+      console.log(msg);
+
+      io.sockets.emit("received message", msg);
+    });
+
+    socket.on("disconnect", function() {
+      console.log("user disconnected");
+    });
+  });
+
+  io.on("connection", function(socket) {
+    console.log("a user is connected");
+
     socket.on("disconnect", function() {
       console.log("user disconnected");
     });
