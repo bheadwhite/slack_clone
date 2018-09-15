@@ -20,9 +20,12 @@ class MessageProvider extends Component {
       datetime: []
     };
 
-    socket.on('received message', message => {
-      console.log(message)
-      console.log(this.state.messages)
+    socket.on('received message', (message) => {
+      axios.get('/api/messages').then(res => {
+        this.setState({
+          messages: [message, ...res.data]
+        });
+      });
     })
   }
 
