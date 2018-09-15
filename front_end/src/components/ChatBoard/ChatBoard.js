@@ -85,19 +85,6 @@ class ChatBoard extends Component {
     socket.on("message", this.handleMessage);
   }
 
-<<<<<<< HEAD
-  handleMessage(message) {
-    this.setState({
-      text: message
-    });
-  }
-
-  sendMessage = () => {
-    socket.emit("message", this.state.text);
-  };
-
-=======
->>>>>>> master
   componentWillMount() {
     this.setState({ profile: {} });
     const { userProfile, getProfile } = this.props.auth;
@@ -113,12 +100,12 @@ class ChatBoard extends Component {
   handleMessage(message) {
     this.setState({
       text: message
-    })
+    });
   }
 
   sendMessage = () => {
-    socket.emit('message', this.state.text)
-  }
+    socket.emit("message", this.state.text);
+  };
 
   render() {
     const { id, first_name, last_name, profile_img, email } = this.state.profile;
