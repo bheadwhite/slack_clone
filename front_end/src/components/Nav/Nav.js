@@ -1,16 +1,12 @@
-import React from 'react'
+import React from "react";
 
-function Nav(props) {
-
+function Nav() {
   return (
-    <div className='nav'>
-        <span className='nav-item-channel'>Channel Name &nbsp;</span>
-        <div>
-          
-          </div>
-        <button onClick={()=> props.auth()}>Logout</button>
-      </div>
-    );
+    <div className="nav">
+      <span className="nav-item-channel">Channel Name &nbsp;</span>
+      <div />
+    </div>
+  );
 }
 
 export default Nav;

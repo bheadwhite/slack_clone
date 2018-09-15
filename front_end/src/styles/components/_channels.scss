@@ -62,12 +62,13 @@
     .scale {
       letter-spacing: 1.5px;
     }
-    .cursor {
-      cursor: pointer;
-    }
+
     .selectBack:hover {
       // background:#818487;
       color: white;
     }
+  }
+  .cursor {
+    cursor: pointer;
   }
 }

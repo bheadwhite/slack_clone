@@ -73,6 +73,7 @@ class Admin extends Component {
         <section className="options-list">
           <ul>
             <li>Sign in to another workspace ...</li>
+            <li onClick={() => this.props.auth()}>Logout</li>
           </ul>
         </section>
 
