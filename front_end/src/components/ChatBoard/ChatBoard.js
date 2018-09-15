@@ -40,9 +40,9 @@ class ChatBoard extends Component {
 
     axios.post(`/api/messages`, { message, message_date, user_id, channel_id }).then(res => {
       console.log("posted AF");
-      // this.setState({
-      //   text: ""
-      // });
+      this.setState({
+        text: ""
+      });
     });
     this.sendMessage();
   };
