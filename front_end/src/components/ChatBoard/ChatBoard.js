@@ -24,8 +24,9 @@ class ChatBoard extends Component {
     this.submitMessage = this.submitMessage.bind(this);
     this.handleChange = this.handleChange.bind(this);
 
-    socket.on('received message', (message) => {
-      axios.get('/api/messages').then(res => {
+    socket.on('received message', async (message) => {
+      console.log('its hitting here')
+      await axios.get('/api/messages').then(res => {
         this.setState({
           messages: [...res.data]
         });
