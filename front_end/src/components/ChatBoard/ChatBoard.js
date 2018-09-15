@@ -85,7 +85,6 @@ class ChatBoard extends Component {
     socket.on("message", this.handleMessage);
   }
 
-<<<<<<< HEAD
   handleMessage(message) {
     this.setState({
       text: message
@@ -96,8 +95,6 @@ class ChatBoard extends Component {
     socket.emit("message", this.state.text);
   };
 
-=======
->>>>>>> master
   componentWillMount() {
     this.setState({ profile: {} });
     const { userProfile, getProfile } = this.props.auth;
