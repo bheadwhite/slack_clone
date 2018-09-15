@@ -24,7 +24,8 @@ class ChatBoard extends Component {
     this.submitMessage = this.submitMessage.bind(this);
     this.handleChange = this.handleChange.bind(this);
 
-    socket.on("received message", message => {
+    socket.on("received message", async message => {
+      console.log("its hitting here");
       axios.get("/api/messages").then(res => {
         this.setState({
           messages: [...res.data]
@@ -44,14 +45,14 @@ class ChatBoard extends Component {
       text: message
     });
   }
-  submitMessage = e => {
+  submitMessage = async e => {
     e.preventDefault();
     let message = this.state.text;
     let message_date = new Date();
     let user_id = this.state.profile.id;
     let channel_id = null;
 
-    axios.post(`/api/messages`, { message, message_date, user_id, channel_id }).then(res => {
+    await axios.post(`/api/messages`, { message, message_date, user_id, channel_id }).then(res => {
       this.setState({
         text: ""
       });
@@ -95,6 +96,9 @@ class ChatBoard extends Component {
 
   componentDidMount() {
     socket.on("message", this.handleMessage);
+    socket.on("received message", msg => {
+      console.log(msg);
+    });
     axios.get("/api/messages").then(res => {
       this.setState({
         messages: [...res.data]
