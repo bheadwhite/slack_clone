@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import Moment from "react-moment";
-import "./Chatboard.css";
-import "./ChatMessage/message.css";
 import Nav from "../Nav/Nav";
 import Channels from "./../Channels/Channels";
 import axios from "axios";
 import { MessageContext } from "../../Contexts/MessageProvider";
 import openSocket from "socket.io-client";
 import { UserContext } from "./../../Contexts/UserProvider";
+import ScrollToBottom from "react-scroll-to-bottom";
 
 const socket = openSocket("http://localhost:4000");
 
@@ -138,7 +137,7 @@ class ChatBoard extends Component {
         <div className="ChatBoard-container">
           <div className="ChatBoard-message-parent-container">
             <Nav auth={this.logout} profile={this.state.profile} />
-            <div className="ChatBoard-message-child-container">
+            <ScrollToBottom className="ChatBoard-message-child-container">
               <MessageContext.Consumer>
                 {context =>
                   context.state.messages.map((message, i) => (
@@ -165,7 +164,7 @@ class ChatBoard extends Component {
                   ))
                 }
               </MessageContext.Consumer>
-            </div>
+            </ScrollToBottom>
           </div>
           <div className="ChatBoard-message-container">
             <form className="form-message-container" onSubmit={this.submitMessage}>
