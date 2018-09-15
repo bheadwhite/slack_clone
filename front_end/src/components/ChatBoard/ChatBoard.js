@@ -24,14 +24,14 @@ class ChatBoard extends Component {
     this.submitMessage = this.submitMessage.bind(this);
     this.handleChange = this.handleChange.bind(this);
 
-    socket.on('received message', (message) => {
-      console.log('its hitting here')
-      axios.get('/api/messages').then(res => {
+    socket.on("received message", message => {
+      console.log("its hitting here");
+      axios.get("/api/messages").then(res => {
         this.setState({
           messages: [...res.data]
         });
       });
-    })
+    });
   }
 
   // ===============  message functions  ============== //
@@ -43,10 +43,10 @@ class ChatBoard extends Component {
   handleMessage(message) {
     this.setState({
       text: message
-    })
+    });
   }
-  submitMessage = async (e) => {
-    e.preventDefault()
+  submitMessage = async e => {
+    e.preventDefault();
     let message = this.state.text;
     let message_date = new Date();
     let user_id = this.state.profile.id;
@@ -57,7 +57,7 @@ class ChatBoard extends Component {
         text: ""
       });
     });
-    socket.emit('message', this.state.text)
+    socket.emit("message", this.state.text);
   };
 
   editMessage = (id, text) => {
@@ -96,7 +96,7 @@ class ChatBoard extends Component {
 
   componentDidMount() {
     socket.on("message", this.handleMessage);
-    axios.get('/api/messages').then(res => {
+    axios.get("/api/messages").then(res => {
       this.setState({
         messages: [...res.data]
       });
@@ -115,7 +115,6 @@ class ChatBoard extends Component {
     }
   }
 
-<<<<<<< HEAD
   handleMessage(message) {
     this.setState({
       text: message
@@ -125,16 +124,13 @@ class ChatBoard extends Component {
   sendMessage = () => {
     socket.emit("message", this.state.text);
   };
-=======
-
->>>>>>> master
 
   render() {
     const { id, first_name, last_name, profile_img, email } = this.state.profile;
-    let newMessages = []
-    socket.on('recieved message', msg => {
-      console.log(msg)
-    })
+    let newMessages = [];
+    socket.on("recieved message", msg => {
+      console.log(msg);
+    });
     return (
       <div className="mainChat">
         <UserContext.Consumer>
@@ -165,30 +161,28 @@ class ChatBoard extends Component {
           <div className="ChatBoard-message-parent-container">
             <Nav auth={this.logout} profile={this.state.profile} />
             <ScrollToBottom className="ChatBoard-message-child-container">
-                {
-                  this.state.messages.map((message, i) => (
-                    // in the map I just reference message.whatever instead of context.state.whatever
-                    <div key={i} className="Message-container">
-                      <div>
-                        <img id="profile-img" src={message.profile_img} alt="profile_image" />
-                      </div>
-                      <div className="username">
-                        {message.first_name} {message.last_name}
-                        <span className="date-time">
-                          <Moment format="hh:mm a">{message.message_date}</Moment>
-                        </span>
-                        <div className="Message-text">{message.message}</div>
-                      </div>
-                      <span className="Message-edit" onClick={() => this.editMessage()}>
-                        {" "}
-                        ...{" "}
-                      </span>
-                      <span className="Message-delete" onClick={() => this.removeMessage()}>
-                        X
-                      </span>
-                    </div>
-                  ))
-                }
+              {this.state.messages.map((message, i) => (
+                // in the map I just reference message.whatever instead of context.state.whatever
+                <div key={i} className="Message-container">
+                  <div>
+                    <img id="profile-img" src={message.profile_img} alt="profile_image" />
+                  </div>
+                  <div className="username">
+                    {message.first_name} {message.last_name}
+                    <span className="date-time">
+                      <Moment format="hh:mm a">{message.message_date}</Moment>
+                    </span>
+                    <div className="Message-text">{message.message}</div>
+                  </div>
+                  <span className="Message-edit" onClick={() => this.editMessage()}>
+                    {" "}
+                    ...{" "}
+                  </span>
+                  <span className="Message-delete" onClick={() => this.removeMessage()}>
+                    X
+                  </span>
+                </div>
+              ))}
             </ScrollToBottom>
           </div>
           <div className="ChatBoard-message-container">
