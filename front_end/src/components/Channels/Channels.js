@@ -35,7 +35,7 @@ class Channels extends Component {
             </span>
           </div>
           <div className={adminShow ? "adminShow" : "adminHide"}>
-            <Admin />
+            <Admin auth={this.props.auth} />
           </div>
         </div>
         <div className="channelsSection">

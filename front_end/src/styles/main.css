@@ -73,10 +73,10 @@
       margin-top: 20px; }
     .channels-container .channelsSection .scale {
       letter-spacing: 1.5px; }
-    .channels-container .channelsSection .cursor {
-      cursor: pointer; }
     .channels-container .channelsSection .selectBack:hover {
       color: white; }
+  .channels-container .cursor {
+    cursor: pointer; }
 
 :root {
   --gray-border: 1px solid rgba(226, 219, 219, 0.8); }
