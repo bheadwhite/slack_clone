@@ -6,7 +6,7 @@ import axios from "axios";
 import { MessageContext } from "../../Contexts/MessageProvider";
 import openSocket from "socket.io-client";
 import { UserContext } from "./../../Contexts/UserProvider";
-import ScrollToBottom from 'react-scroll-to-bottom'
+import ScrollToBottom from "react-scroll-to-bottom";
 
 const socket = openSocket("http://localhost:4000");
 
@@ -103,7 +103,6 @@ class ChatBoard extends Component {
     });
   }
 
-
   componentWillMount() {
     this.setState({ profile: {} });
     const { userProfile, getProfile } = this.props.auth;
@@ -116,7 +115,19 @@ class ChatBoard extends Component {
     }
   }
 
+<<<<<<< HEAD
+  handleMessage(message) {
+    this.setState({
+      text: message
+    });
+  }
 
+  sendMessage = () => {
+    socket.emit("message", this.state.text);
+  };
+=======
+
+>>>>>>> master
 
   render() {
     const { id, first_name, last_name, profile_img, email } = this.state.profile;
