@@ -23,14 +23,14 @@ class Channels extends Component {
     const { adminShow } = this.state;
     return (
       <div className="channels-container">
-        <div className="adminPanel cursor" onClick={() => this.setState({ adminShow: !adminShow })}>
+        <div className="adminPanel cursor">
           <div className="center cursor">
             <h4 className="cursor">
               DevMountain
               <Icon name="dropdown" size="small" className="selectBack" />
             </h4>
             <Icon name="circle" size="small" color="green" />
-            <span className="selectBack">
+            <span className="selectBack" onClick={() => this.setState({ adminShow: !adminShow })}>
               <UserContext.Consumer>{context => context.state.firstName}</UserContext.Consumer>
             </span>
           </div>

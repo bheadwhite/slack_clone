@@ -83,6 +83,7 @@ class ChatBoard extends Component {
     socket.on("message", this.handleMessage);
   }
 
+
   componentWillMount() {
     this.setState({ profile: {} });
     const { userProfile, getProfile } = this.props.auth;
