@@ -49,7 +49,7 @@ class Admin extends Component {
         <section className="options-list">
           <ul>
             <li className="status-update" onClick={() => this.showStatus()}>
-              Set a status
+              Set a status...
             </li>
             <li>Profile & account</li>
             <li>Preferences</li>
