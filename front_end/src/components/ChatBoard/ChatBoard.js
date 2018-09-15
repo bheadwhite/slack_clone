@@ -17,11 +17,20 @@ class ChatBoard extends Component {
       profile: {},
       users: [],
       text: "",
-      channel: ["super-team"]
+      channel: ["super-team"],
+      messages: []
     };
     this.logout = this.logout.bind(this);
     this.submitMessage = this.submitMessage.bind(this);
     this.handleChange = this.handleChange.bind(this);
+
+    socket.on('received message', (message) => {
+      axios.get('/api/messages').then(res => {
+        this.setState({
+          messages: [...res.data]
+        });
+      });
+    })
   }
 
   // ===============  message functions  ============== //
@@ -30,20 +39,24 @@ class ChatBoard extends Component {
       text: event.target.value
     });
   }
-
-  submitMessage = () => {
+  handleMessage(message) {
+    this.setState({
+      text: message
+    })
+  }
+  submitMessage = (e) => {
+    e.preventDefault()
     let message = this.state.text;
     let message_date = new Date();
     let user_id = this.state.profile.id;
     let channel_id = null;
 
     axios.post(`/api/messages`, { message, message_date, user_id, channel_id }).then(res => {
-      console.log("posted AF");
       this.setState({
         text: ""
       });
     });
-    this.sendMessage();
+    socket.emit('message', this.state.text)
   };
 
   editMessage = (id, text) => {
@@ -82,6 +95,11 @@ class ChatBoard extends Component {
 
   componentDidMount() {
     socket.on("message", this.handleMessage);
+    axios.get('/api/messages').then(res => {
+      this.setState({
+        messages: [...res.data]
+      });
+    });
   }
 
   componentWillMount() {
@@ -96,6 +114,7 @@ class ChatBoard extends Component {
     }
   }
 
+<<<<<<< HEAD
   handleMessage(message) {
     this.setState({
       text: message
@@ -105,9 +124,16 @@ class ChatBoard extends Component {
   sendMessage = () => {
     socket.emit("message", this.state.text);
   };
+=======
+
+>>>>>>> master
 
   render() {
     const { id, first_name, last_name, profile_img, email } = this.state.profile;
+    let newMessages = []
+    socket.on('recieved message', msg => {
+      console.log(msg)
+    })
     return (
       <div className="mainChat">
         <UserContext.Consumer>
@@ -138,9 +164,8 @@ class ChatBoard extends Component {
           <div className="ChatBoard-message-parent-container">
             <Nav auth={this.logout} profile={this.state.profile} />
             <ScrollToBottom className="ChatBoard-message-child-container">
-              <MessageContext.Consumer>
-                {context =>
-                  context.state.messages.map((message, i) => (
+                {
+                  this.state.messages.map((message, i) => (
                     // in the map I just reference message.whatever instead of context.state.whatever
                     <div key={i} className="Message-container">
                       <div>
@@ -163,7 +188,6 @@ class ChatBoard extends Component {
                     </div>
                   ))
                 }
-              </MessageContext.Consumer>
             </ScrollToBottom>
           </div>
           <div className="ChatBoard-message-container">

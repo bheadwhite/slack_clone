@@ -19,14 +19,6 @@ class MessageProvider extends Component {
       messages: [],
       datetime: []
     };
-
-    socket.on('received message', (message) => {
-      axios.get('/api/messages').then(res => {
-        this.setState({
-          messages: [message, ...res.data]
-        });
-      });
-    })
   }
 
   componentDidMount = () => {
@@ -40,7 +32,7 @@ class MessageProvider extends Component {
 
   render() {
     return (
-      <MessageContext.Provider value={{ state: this.state, }}>
+      <MessageContext.Provider value={{ state: this.state }}>
         {
           /*this will allow the children of the component you wrap with UserContext*/
           this.props.children
