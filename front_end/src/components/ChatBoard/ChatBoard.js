@@ -26,7 +26,7 @@ class ChatBoard extends Component {
 
     socket.on('received message', async (message) => {
       console.log('its hitting here')
-      await axios.get('/api/messages').then(res => {
+      axios.get('/api/messages').then(res => {
         this.setState({
           messages: [...res.data]
         });
@@ -96,11 +96,14 @@ class ChatBoard extends Component {
 
   componentDidMount() {
     socket.on("message", this.handleMessage);
+    socket.on('received message', msg => {
+      console.log(msg)
+    })
     axios.get('/api/messages').then(res => {
       this.setState({
         messages: [...res.data]
       });
-    });
+    })
   }
 
 
