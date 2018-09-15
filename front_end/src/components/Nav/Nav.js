@@ -1,9 +1,9 @@
 import React from "react";
 
-function Nav() {
+function Nav(props) {
   return (
     <div className="nav">
-      <span className="nav-item-channel">Channel Name &nbsp;</span>
+      <span className="nav-item-channel">{props.channel}</span>
       <div />
     </div>
   );

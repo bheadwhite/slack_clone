@@ -162,7 +162,7 @@ class ChatBoard extends Component {
 
         <div className="ChatBoard-container">
           <div className="ChatBoard-message-parent-container">
-            <Nav profile={this.state.profile} />
+            <Nav profile={this.state.profile} channel={this.state.channel} />
             <ScrollToBottom className="ChatBoard-message-child-container">
               {this.state.messages.map((message, i) => (
                 // in the map I just reference message.whatever instead of context.state.whatever
