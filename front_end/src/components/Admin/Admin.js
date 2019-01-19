@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./Admin.css";
 import axios from "axios";
 
 import Status from "../Status/Status.js";
@@ -10,11 +9,6 @@ class Admin extends Component {
     super();
 
     this.state = {
-      firstName: "bill",
-      lastName: "murray",
-      email: "murray@gmail.com",
-      profileImg: "http://res.cloudinary.com/bfrest/image/upload/v1519392910/mainPic.png",
-      stillImg: "",
       showStatus: false
     };
   }
@@ -42,7 +36,7 @@ class Admin extends Component {
         <UserContext.Consumer>
           {context => (
             <div className="info-wrapper">
-              <img className="profile-pic" src={this.state.profileImg} alt="profile pic" />
+              <img className="profile-pic" src={context.state.profileImg} alt="profile pic" />
               <p className="name">
                 {context.state.firstName} {context.state.lastName}
               </p>
@@ -55,7 +49,7 @@ class Admin extends Component {
         <section className="options-list">
           <ul>
             <li className="status-update" onClick={() => this.showStatus()}>
-              Set a status
+              Set a status...
             </li>
             <li>Profile & account</li>
             <li>Preferences</li>
@@ -79,6 +73,7 @@ class Admin extends Component {
         <section className="options-list">
           <ul>
             <li>Sign in to another workspace ...</li>
+            <li onClick={() => this.props.auth()}>Logout</li>
           </ul>
         </section>
 

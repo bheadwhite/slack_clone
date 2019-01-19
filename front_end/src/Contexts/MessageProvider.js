@@ -1,34 +1,34 @@
 import React, { Component } from "react";
 import axios from "axios";
+import openSocket from 'socket.io-client'
 //this will create a new context
 export const MessageContext = React.createContext();
+const socket = openSocket('http://localhost:4000')
 
 class MessageProvider extends Component {
-  state = {
-    firstName: [],
-    lastName: [],
-    email: [],
-    profileImg: [],
-    stillImg: [],
-    showStatus: "",
-    messages: [],
-  };
+  constructor() {
+    super()
+
+    this.state = {
+      firstName: [],
+      lastName: [],
+      email: [],
+      profileImg: [],
+      stillImg: [],
+      showStatus: "",
+      messages: [],
+      datetime: []
+    };
+  }
 
   componentDidMount = () => {
-    axios.get('/api/messages').then(res => {
-      const userMessages = res.data
-
+    axios.get("/api/messages").then(res => {
       this.setState({
-        firstName: [userMessages.first_name],
-        lastName: [userMessages.last_name],
-        email: [userMessages.email],
-        profileImg: [userMessages.profile_img],
-        stillImg: [],
-        showStatus: "",
-        messages: [userMessages.message],
-      })
-    })
-  }
+        messages: [...res.data]
+      });
+    });
+  };
+
 
   render() {
     return (

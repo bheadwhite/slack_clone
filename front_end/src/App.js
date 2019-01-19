@@ -1,18 +1,11 @@
 import React, { Component } from "react";
-import routes from "./routes";
 import "./App.css";
-import UserProvider from "./Contexts/UserProvider.js";
-import MessageProvider from "./Contexts/MessageProvider";
+// =========    styles  ===============//
+import "./styles/main.css";
 
 class App extends Component {
   render() {
-    return (
-      <MessageProvider>
-        <UserProvider>
-          <div className="App">{routes}</div>
-        </UserProvider>
-      </MessageProvider>
-    );
+    return <div className="App" />;
   }
 }
 

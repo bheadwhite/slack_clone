@@ -1,16 +1,12 @@
-import React, { Component } from "react";
-import './Nav.css'
+import React from "react";
 
-class Nav extends Component {
-  state = {};
-  render() {
-    return (
-      <div className='nav'>
-        <span className='nav-item-channel'>Channel Name</span>
-        <span className='nav-item'>Logout</span> 
-      </div>
-    );
-  }
+function Nav(props) {
+  return (
+    <div className="nav">
+      <span className="nav-item-channel">{props.channel}</span>
+      <div />
+    </div>
+  );
 }
 
 export default Nav;

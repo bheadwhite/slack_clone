@@ -5,17 +5,12 @@ export const UserContext = React.createContext();
 
 class UserProvider extends Component {
   state = {
-    firstName: "Brendon",
-    lastName: "Freston",
-    status: "feeling Good",
-    email: "freston75@gmail.com",
-    profileImg: "http://res.cloudinary.com/bfrest/image/upload/v1519392910/mainPic.png",
-    showStatus: false
+    id: "",
+    first_name: "",
+    last_name: "",
+    profileImg: "",
+    email: ""
   };
-
-  getLoggedInUserById() {
-    // we will need a function that gets the logged in user and sets all the info to state
-  }
 
   render() {
     return (
